@@ -6,159 +6,9 @@ import {
 
 const STORAGE_KEY = "railtrack_saved_journeys";
 
-/* ================= ICONS ================= */
-
-function PlanIcon() {
-  return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 8v8" />
-      <path d="M8 12h8" />
-    </svg>
-  );
-}
-
-function JourneysIcon() {
-  return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect x="4" y="4" width="6" height="6" rx="1" />
-      <rect x="14" y="4" width="6" height="6" rx="1" />
-      <rect x="4" y="14" width="6" height="6" rx="1" />
-      <rect x="14" y="14" width="6" height="6" rx="1" />
-    </svg>
-  );
-}
-
-function StatsIcon() {
-  return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M4 19V9" />
-      <path d="M10 19V5" />
-      <path d="M16 19v-7" />
-      <path d="M22 19V3" />
-    </svg>
-  );
-}
-
-function DashboardIcon() {
-  return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M3 10.5 12 3l9 7.5" />
-      <path d="M5 9.5V21h14V9.5" />
-      <path d="M9 21v-6h6v6" />
-    </svg>
-  );
-}
-
-function TrashIcon() {
-  return (
-    <svg
-      width="19"
-      height="19"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M4 7h16" />
-      <path d="M10 11v6" />
-      <path d="M14 11v6" />
-      <path d="M6 7l1 14h10l1-14" />
-      <path d="M9 7V4h6v3" />
-    </svg>
-  );
-}
-
-function TrainLogoIcon() {
-  return (
-    <svg
-      width="27"
-      height="27"
-      viewBox="0 0 32 32"
-      fill="none"
-    >
-      <rect
-        x="2"
-        y="2"
-        width="28"
-        height="28"
-        rx="7"
-        fill="url(#trainGradient)"
-      />
-
-      <path
-        d="M10 9.5C10 8.12 11.12 7 12.5 7h7C20.88 7 22 8.12 22 9.5v8.8c0 1.49-1.21 2.7-2.7 2.7h-6.6c-1.49 0-2.7-1.21-2.7-2.7V9.5Z"
-        fill="white"
-      />
-
-      <path
-        d="M12.5 10h7v5h-7v-5Z"
-        fill="#5B8DB8"
-      />
-
-      <circle cx="13" cy="18.5" r="1.2" fill="#A72E49" />
-      <circle cx="19" cy="18.5" r="1.2" fill="#A72E49" />
-
-      <path
-        d="M12 22.5 9.5 25M20 22.5l2.5 2.5"
-        stroke="white"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-
-      <defs>
-        <linearGradient
-          id="trainGradient"
-          x1="3"
-          y1="3"
-          x2="29"
-          y2="29"
-        >
-          <stop offset="0%" stopColor="#38C6E8" />
-          <stop offset="100%" stopColor="#A72E49" />
-        </linearGradient>
-      </defs>
-    </svg>
-  );
-}
+/* =========================================================
+   ICONS
+========================================================= */
 
 function LocationIcon() {
   return (
@@ -247,16 +97,110 @@ function SparkleIcon() {
       strokeLinejoin="round"
     >
       <path d="m12 3-1.2 5.3L6 10l4.8 1.7L12 17l1.2-5.3L18 10l-4.8-1.7L12 3Z" />
-      <path d="m19 16-.6 2.4L16 19l2.4.6L19 22l.6-2.4L22 19l-2.4-.6L19 16Z" />
+      <path d="m19 16-.6 2.4L16 19l2.4.6L19 22l.6-2.4L19 16Z" />
     </svg>
   );
 }
 
-/* ================= COMPONENT ================= */
+function CheckIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="m5 12 4 4L19 6" />
+    </svg>
+  );
+}
 
-function PlanJourney() {
-  const [fromStation, setFromStation] = useState("Zürich HB");
-  const [toStation, setToStation] = useState("Bern");
+function TrashSmallIcon() {
+  return (
+    <svg
+      width="17"
+      height="17"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M4 7h16" />
+      <path d="M9 7V4h6v3" />
+      <path d="M6 7l1 14h10l1-14" />
+      <path d="M10 11v6" />
+      <path d="M14 11v6" />
+    </svg>
+  );
+}
+
+function ChevronDownIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
+
+function ChevronUpIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="m18 15-6-6-6 6" />
+    </svg>
+  );
+}
+
+/* =========================================================
+   MAIN COMPONENT
+========================================================= */
+
+function PlanJourney({
+  savedJourneys,
+  setSavedJourneys,
+}) {
+  /* =======================================================
+     STATIONS
+  ======================================================= */
+
+  const [fromStation, setFromStation] = useState("");
+  const [toStation, setToStation] = useState("");
+
+  const [fromSuggestions, setFromSuggestions] = useState([]);
+  const [toSuggestions, setToSuggestions] = useState([]);
+
+  const [loadingFrom, setLoadingFrom] = useState(false);
+  const [loadingTo, setLoadingTo] = useState(false);
+
+  const [fromSelected, setFromSelected] = useState(false);
+  const [toSelected, setToSelected] = useState(false);
+
+  /* =======================================================
+     DATE / TIME
+  ======================================================= */
 
   const [departureDate, setDepartureDate] = useState(
     new Date().toISOString().split("T")[0]
@@ -265,1647 +209,3941 @@ function PlanJourney() {
   const [departureTime, setDepartureTime] = useState(() => {
     const now = new Date();
 
-    return `${String(now.getHours()).padStart(2, "0")}:${String(
-      now.getMinutes()
-    ).padStart(2, "0")}`;
+    return `${String(now.getHours()).padStart(
+      2,
+      "0"
+    )}:${String(now.getMinutes()).padStart(2, "0")}`;
   });
 
-  const [fromSuggestions, setFromSuggestions] = useState([]);
-  const [toSuggestions, setToSuggestions] = useState([]);
+  /* =======================================================
+     DEP / ARR
+  ======================================================= */
 
-  const [loadingFrom, setLoadingFrom] = useState(false);
-  const [loadingTo, setLoadingTo] = useState(false);
+  const [isArrivalTime, setIsArrivalTime] =
+    useState(false);
+
+  /* =======================================================
+     CONNECTIONS
+  ======================================================= */
 
   const [connections, setConnections] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const [savedJourneys, setSavedJourneys] = useState(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      return saved ? JSON.parse(saved) : [];
-    } catch {
-      return [];
-    }
-  });
+  /* =======================================================
+     IMPORTANT:
+     savedJourneys is now received from App.jsx.
+     Do NOT create another useState here.
+  ======================================================= */
 
-  useEffect(() => {
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify(savedJourneys)
+  /* =======================================================
+     ROUTE EXPANSION
+  ======================================================= */
+
+  const [expandedRoutes, setExpandedRoutes] =
+    useState({});
+
+  const [showStops, setShowStops] =
+    useState({});
+
+  /* =======================================================
+     TOAST
+  ======================================================= */
+
+  const [saveMessage, setSaveMessage] =
+    useState("");
+
+  const [saveToastType, setSaveToastType] =
+    useState("success");
+
+  const showToast = (
+    message,
+    type = "success"
+  ) => {
+    setSaveMessage(message);
+    setSaveToastType(type);
+
+    window.clearTimeout(
+      showToast.timeoutId
     );
-  }, [savedJourneys]);
+
+    showToast.timeoutId =
+      window.setTimeout(() => {
+        setSaveMessage("");
+      }, 2800);
+  };
+
+  /* =======================================================
+     FROM AUTOCOMPLETE
+  ======================================================= */
 
   useEffect(() => {
-    if (fromStation.length < 2) {
+    const query =
+      fromStation.trim();
+
+    if (
+      query.length === 0 ||
+      fromSelected
+    ) {
       setFromSuggestions([]);
       return;
     }
 
-    const timer = setTimeout(async () => {
-      try {
-        setLoadingFrom(true);
+    if (
+      !/[A-Za-zÀ-ÖØ-öø-ÿ]/.test(query)
+    ) {
+      setFromSuggestions([]);
+      return;
+    }
 
-        const data = await searchStations(fromStation);
+    const timer =
+      setTimeout(
+        async () => {
+          try {
+            setLoadingFrom(true);
 
-        setFromSuggestions(data.stations || []);
-      } catch (err) {
-        console.error("From station error:", err);
-        setFromSuggestions([]);
-      } finally {
-        setLoadingFrom(false);
-      }
-    }, 400);
+            const data =
+              await searchStations(query);
 
-    return () => clearTimeout(timer);
-  }, [fromStation]);
+            setFromSuggestions(
+              (data.stations || []).slice(
+                0,
+                5
+              )
+            );
+          } catch (error) {
+            console.error(
+              "From station search error:",
+              error
+            );
+
+            setFromSuggestions([]);
+          } finally {
+            setLoadingFrom(false);
+          }
+        },
+        400
+      );
+
+    return () =>
+      clearTimeout(timer);
+  }, [
+    fromStation,
+    fromSelected,
+  ]);
+
+  /* =======================================================
+     TO AUTOCOMPLETE
+  ======================================================= */
 
   useEffect(() => {
-    if (toStation.length < 2) {
+    const query =
+      toStation.trim();
+
+    if (
+      query.length === 0 ||
+      toSelected
+    ) {
       setToSuggestions([]);
       return;
     }
 
-    const timer = setTimeout(async () => {
-      try {
-        setLoadingTo(true);
-
-        const data = await searchStations(toStation);
-
-        setToSuggestions(data.stations || []);
-      } catch (err) {
-        console.error("To station error:", err);
-        setToSuggestions([]);
-      } finally {
-        setLoadingTo(false);
-      }
-    }, 400);
-
-    return () => clearTimeout(timer);
-  }, [toStation]);
-
-  const handleSwap = () => {
-    const temp = fromStation;
-
-    setFromStation(toStation);
-    setToStation(temp);
-
-    setConnections([]);
-    setError("");
-  };
-
-  const handleQuickStation = (station) => {
-    if (!fromStation || fromStation === "Zürich HB") {
-      setFromStation(station);
-    } else {
-      setToStation(station);
-    }
-  };
-
-  const handleSearch = async (e) => {
-    e.preventDefault();
-
-    if (!fromStation || !toStation) {
-      setError(
-        "Please enter both departure and arrival stations."
-      );
-      return;
-    }
-
     if (
-      fromStation.toLowerCase() ===
-      toStation.toLowerCase()
+      !/[A-Za-zÀ-ÖØ-öø-ÿ]/.test(query)
     ) {
-      setError(
-        "Departure and arrival stations cannot be the same."
-      );
+      setToSuggestions([]);
       return;
     }
 
-    setLoading(true);
-    setError("");
-    setConnections([]);
+    const timer =
+      setTimeout(
+        async () => {
+          try {
+            setLoadingTo(true);
 
-    try {
-      const data = await searchConnections(
-        fromStation,
-        toStation,
-        departureDate,
-        departureTime
+            const data =
+              await searchStations(query);
+
+            setToSuggestions(
+              (data.stations || []).slice(
+                0,
+                5
+              )
+            );
+          } catch (error) {
+            console.error(
+              "To station search error:",
+              error
+            );
+
+            setToSuggestions([]);
+          } finally {
+            setLoadingTo(false);
+          }
+        },
+        400
       );
 
-      setConnections(data.connections || []);
+    return () =>
+      clearTimeout(timer);
+  }, [
+    toStation,
+    toSelected,
+  ]);
 
-      if (
-        !data.connections ||
-        data.connections.length === 0
-      ) {
-        setError(
-          "No train connections found for this search."
-        );
+  /* =======================================================
+     QUICK BUTTONS
+  ======================================================= */
+
+  const handleQuickStation =
+    (station) => {
+      if (!fromStation.trim()) {
+        setFromStation(station);
+        setFromSelected(true);
+        setFromSuggestions([]);
+        return;
       }
-    } catch (err) {
-      console.error("Connection API error:", err);
 
-      setError(
-        "Unable to find train connections. Please check the station names and try again."
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
+      if (!toStation.trim()) {
+        setToStation(station);
+        setToSelected(true);
+        setToSuggestions([]);
+        return;
+      }
 
-  const saveJourney = (connection) => {
-    const departure =
-      connection.from?.departure || "";
-
-    const arrival =
-      connection.to?.arrival || "";
-
-    const alreadySaved = savedJourneys.some(
-      (journey) =>
-        journey.fromStation === fromStation &&
-        journey.toStation === toStation &&
-        journey.departure === departure
-    );
-
-    if (alreadySaved) {
-      return;
-    }
-
-    const journey = {
-      id: `${Date.now()}-${Math.random()
-        .toString(36)
-        .slice(2, 8)}`,
-
-      fromStation:
-        connection.from?.station?.name ||
-        fromStation,
-
-      toStation:
-        connection.to?.station?.name ||
-        toStation,
-
-      departure,
-      arrival,
-
-      departurePlatform:
-        connection.from?.platform || "",
-
-      arrivalPlatform:
-        connection.to?.platform || "",
-
-      duration: connection.duration || "",
-
-      durationMinutes: getDurationMinutes(
-        connection.duration
-      ),
-
-      transfers: connection.transfers || 0,
-
-      products: connection.products || [],
-
-      status: "planned",
-
-      notes: "",
-
-      savedAt: new Date().toISOString(),
+      setToStation(station);
+      setToSelected(true);
+      setToSuggestions([]);
     };
 
-    setSavedJourneys((prev) => [
-      ...prev,
-      journey,
-    ]);
-  };
+  /* =======================================================
+     SWAP STATIONS
+  ======================================================= */
 
-  const isSaved = (connection) => {
-    const departure =
-      connection.from?.departure || "";
+  const handleSwap = () => {
+    const oldFrom =
+      fromStation;
 
-    return savedJourneys.some(
-      (journey) =>
-        journey.fromStation === fromStation &&
-        journey.toStation === toStation &&
-        journey.departure === departure
-    );
-  };
+    const oldTo =
+      toStation;
 
-  const resetLocalTrips = () => {
-    const confirmReset = window.confirm(
-      "Are you sure you want to remove all saved trips?"
+    setFromStation(oldTo);
+    setToStation(oldFrom);
+
+    setFromSelected(
+      Boolean(oldTo)
     );
 
-    if (!confirmReset) return;
-
-    setSavedJourneys([]);
-    localStorage.removeItem(STORAGE_KEY);
-  };
-
-  const formatTime = (dateString) => {
-    if (!dateString) return "--:--";
-
-    const date = new Date(dateString);
-
-    if (Number.isNaN(date.getTime())) {
-      return "--:--";
-    }
-
-    return date.toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-    });
-  };
-
-  const formatDuration = (duration) => {
-    if (!duration) return "--";
-
-    const match = duration.match(
-      /(\d+)d(\d+):(\d+):(\d+)/
+    setToSelected(
+      Boolean(oldFrom)
     );
 
-    if (!match) {
-      return duration;
-    }
+    setFromSuggestions([]);
+    setToSuggestions([]);
 
-    const days = Number(match[1]);
-    const hours = Number(match[2]);
-    const minutes = Number(match[3]);
+    setConnections([]);
+    setError("");
 
-    let result = "";
-
-    if (days > 0) {
-      result += `${days}d `;
-    }
-
-    if (hours > 0) {
-      result += `${hours}h `;
-    }
-
-    result += `${minutes} min`;
-
-    return result.trim();
+    setExpandedRoutes({});
+    setShowStops({});
   };
 
-  const getDurationMinutes = (duration) => {
-    if (!duration) return 0;
+  /* =======================================================
+     DEP / ARR SWITCH
+  ======================================================= */
 
-    const match = duration.match(
-      /(\d+)d(\d+):(\d+):(\d+)/
-    );
+  const handleTimeModeChange =
+    () => {
+      setIsArrivalTime(
+        (previous) =>
+          !previous
+      );
 
-    if (!match) return 0;
+      setConnections([]);
+      setError("");
 
-    const days = Number(match[1]);
-    const hours = Number(match[2]);
-    const minutes = Number(match[3]);
+      setExpandedRoutes({});
+      setShowStops({});
+    };
 
+  /* =======================================================
+     SEARCH
+  ======================================================= */
+
+  const handleSearch =
+    async (e) => {
+      e.preventDefault();
+
+      const from =
+        fromStation.trim();
+
+      const to =
+        toStation.trim();
+
+      if (!from || !to) {
+        setError(
+          "Please enter both departure and arrival stations."
+        );
+
+        return;
+      }
+
+      if (
+        from.toLowerCase() ===
+        to.toLowerCase()
+      ) {
+        setError(
+          "Departure and arrival stations cannot be the same."
+        );
+
+        return;
+      }
+
+      setLoading(true);
+      setError("");
+      setConnections([]);
+
+      setExpandedRoutes({});
+      setShowStops({});
+
+      setFromSuggestions([]);
+      setToSuggestions([]);
+
+      try {
+        const data =
+          await searchConnections(
+            from,
+            to,
+            departureDate,
+            departureTime,
+            isArrivalTime
+          );
+
+        const results =
+          data.connections || [];
+
+        setConnections(
+          results
+        );
+
+        if (
+          results.length ===
+          0
+        ) {
+          setError(
+            "No train connections found for this search."
+          );
+        }
+      } catch (error) {
+        console.error(
+          "Connection API error:",
+          error
+        );
+
+        setError(
+          "Unable to find train connections. Please check the station names and try again."
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+  /* =======================================================
+     FIND SAVED
+  ======================================================= */
+
+  const findSavedJourney =
+    (connection) => {
+      const departure =
+        connection.from
+          ?.departure ||
+        "";
+
+      const realFrom =
+        connection.from
+          ?.station?.name ||
+        fromStation.trim();
+
+      const realTo =
+        connection.to
+          ?.station?.name ||
+        toStation.trim();
+
+      return savedJourneys.find(
+        (journey) =>
+          journey.fromStation ===
+            realFrom &&
+          journey.toStation ===
+            realTo &&
+          journey.departure ===
+            departure
+      );
+    };
+
+  /* =======================================================
+     SAVE / UNSAVE
+  ======================================================= */
+
+  const saveJourney =
+    (connection) => {
+      const existing =
+        findSavedJourney(
+          connection
+        );
+
+      /* ===================================================
+         UNSAVE
+      =================================================== */
+
+      if (existing) {
+        const updated =
+          savedJourneys.filter(
+            (journey) =>
+              journey.id !==
+              existing.id
+          );
+
+        setSavedJourneys(
+          updated
+        );
+
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify(
+            updated
+          )
+        );
+
+        showToast(
+          `${existing.fromStation} → ${existing.toStation} removed from saved journeys.`,
+          "removed"
+        );
+
+        return;
+      }
+
+      /* ===================================================
+         SAVE
+      =================================================== */
+
+      const realFrom =
+        connection.from
+          ?.station?.name ||
+        fromStation.trim();
+
+      const realTo =
+        connection.to
+          ?.station?.name ||
+        toStation.trim();
+
+      const newJourney = {
+        id: `${Date.now()}-${Math.random()
+          .toString(36)
+          .slice(2, 8)}`,
+
+        fromStation:
+          realFrom,
+
+        toStation:
+          realTo,
+
+        departure:
+          connection.from
+            ?.departure || "",
+
+        arrival:
+          connection.to
+            ?.arrival || "",
+
+        departurePlatform:
+          connection.from
+            ?.platform || "",
+
+        arrivalPlatform:
+          connection.to
+            ?.platform || "",
+
+        duration:
+          connection.duration ||
+          "",
+
+        durationMinutes:
+          getDurationMinutes(
+            connection.duration
+          ),
+
+        transfers:
+          connection.transfers ||
+          0,
+
+        products:
+          connection.products ||
+          [],
+
+        status:
+          "planned",
+
+        notes:
+          "",
+
+        savedAt:
+          new Date().toISOString(),
+      };
+
+      setSavedJourneys(
+        (previous) => {
+          const updated = [
+            ...previous,
+            newJourney,
+          ];
+
+          localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(
+              updated
+            )
+          );
+
+          return updated;
+        }
+      );
+
+      showToast(
+        `${realFrom} → ${realTo} saved successfully!`,
+        "success"
+      );
+    };
+
+  /* =======================================================
+     EXPAND / COLLAPSE
+  ======================================================= */
+
+  const toggleRoute =
+    (index) => {
+      const next =
+        !expandedRoutes[
+          index
+        ];
+
+      setExpandedRoutes(
+        (previous) => ({
+          ...previous,
+          [index]:
+            next,
+        })
+      );
+
+      if (next) {
+        setShowStops(
+          (previous) => ({
+            ...previous,
+            [index]:
+              false,
+          })
+        );
+      }
+    };
+
+  /* =======================================================
+     PLUS / MINUS
+  ======================================================= */
+
+  const toggleStops =
+    (index) => {
+      setShowStops(
+        (previous) => ({
+          ...previous,
+          [index]:
+            !previous[index],
+        })
+      );
+    };
+
+  /* =======================================================
+     FORMAT TIME
+  ======================================================= */
+
+  const formatTime =
+    (value) => {
+      if (!value) {
+        return "--:--";
+      }
+
+      const date =
+        new Date(value);
+
+      if (
+        Number.isNaN(
+          date.getTime()
+        )
+      ) {
+        return "--:--";
+      }
+
+      return date.toLocaleTimeString(
+        [],
+        {
+          hour:
+            "2-digit",
+
+          minute:
+            "2-digit",
+
+          hour12:
+            false,
+        }
+      );
+    };
+
+  /* =======================================================
+     FORMAT DURATION
+  ======================================================= */
+
+  const formatDuration =
+    (duration) => {
+      if (!duration) {
+        return "--";
+      }
+
+      const match =
+        duration.match(
+          /(\d+)d(\d+):(\d+):(\d+)/
+        );
+
+      if (!match) {
+        return duration;
+      }
+
+      const days =
+        Number(match[1]);
+
+      const hours =
+        Number(match[2]);
+
+      const minutes =
+        Number(match[3]);
+
+      let result =
+        "";
+
+      if (days > 0) {
+        result +=
+          `${days}d `;
+      }
+
+      if (hours > 0) {
+        result +=
+          `${hours}h `;
+      }
+
+      result +=
+        `${minutes} min`;
+
+      return result.trim();
+    };
+
+  /* =======================================================
+     DURATION MINUTES
+  ======================================================= */
+
+  const getDurationMinutes =
+    (duration) => {
+      if (!duration) {
+        return 0;
+      }
+
+      const match =
+        duration.match(
+          /(\d+)d(\d+):(\d+):(\d+)/
+        );
+
+      if (!match) {
+        return 0;
+      }
+
+      const days =
+        Number(match[1]);
+
+      const hours =
+        Number(match[2]);
+
+      const minutes =
+        Number(match[3]);
+
+      return (
+        days * 24 * 60 +
+        hours * 60 +
+        minutes
+      );
+    };
+
+  /* =======================================================
+     PRODUCT
+  ======================================================= */
+
+  const getProductName =
+    (connection) => {
+      if (
+        Array.isArray(
+          connection.products
+        ) &&
+        connection.products.length >
+          0
+      ) {
+        return connection.products.join(
+          " "
+        );
+      }
+
+      return "Train";
+    };
+
+  /* =======================================================
+     JOURNEY STOPS
+  ======================================================= */
+
+  const getJourneyStops =
+    (connection) => {
+      const sections =
+        connection.sections ||
+        [];
+
+      const stops =
+        [];
+
+      sections.forEach(
+        (section) => {
+          const passList =
+            section.journey
+              ?.passList ||
+            [];
+
+          passList.forEach(
+            (pass) => {
+              const stationName =
+                pass.station
+                  ?.name;
+
+              if (!stationName) {
+                return;
+              }
+
+              const item = {
+                key: [
+                  stationName,
+                  pass.arrival ||
+                    "",
+                  pass.departure ||
+                    "",
+                  pass.platform ||
+                    "",
+                ].join("|"),
+
+                stationName,
+
+                arrival:
+                  pass.arrival ||
+                  "",
+
+                departure:
+                  pass.departure ||
+                  "",
+
+                platform:
+                  pass.platform ||
+                  "",
+              };
+
+              const exists =
+                stops.some(
+                  (stop) =>
+                    stop.key ===
+                    item.key
+                );
+
+              if (!exists) {
+                stops.push(
+                  item
+                );
+              }
+            }
+          );
+        }
+      );
+
+      if (
+        stops.length < 2
+      ) {
+        return [
+          {
+            key:
+              "start",
+
+            stationName:
+              connection.from
+                ?.station
+                ?.name ||
+              fromStation,
+
+            arrival:
+              "",
+
+            departure:
+              connection.from
+                ?.departure ||
+              "",
+
+            platform:
+              connection.from
+                ?.platform ||
+              "",
+          },
+
+          {
+            key:
+              "end",
+
+            stationName:
+              connection.to
+                ?.station
+                ?.name ||
+              toStation,
+
+            arrival:
+              connection.to
+                ?.arrival ||
+              "",
+
+            departure:
+              "",
+
+            platform:
+              connection.to
+                ?.platform ||
+              "",
+          },
+        ];
+      }
+
+      return stops;
+    };
+
+  /* =======================================================
+     DIRECTION
+  ======================================================= */
+
+  const getDirection =
+    (connection) => {
+      const sections =
+        connection.sections ||
+        [];
+
+      const journeySection =
+        sections.find(
+          (section) =>
+            section.journey
+        );
+
+      return (
+        journeySection
+          ?.journey
+          ?.to
+          ?.name ||
+        connection.to
+          ?.station
+          ?.name ||
+        toStation ||
+        "Destination"
+      );
+    };
+
+  /* =======================================================
+     STOP TIMES
+  ======================================================= */
+
+  const renderStopTimes =
+    (stop) => {
+      const arrival =
+        stop.arrival
+          ? formatTime(
+              stop.arrival
+            )
+          : "";
+
+      const departure =
+        stop.departure
+          ? formatTime(
+              stop.departure
+            )
+          : "";
+
+      if (
+        arrival &&
+        departure &&
+        arrival !==
+          departure
+      ) {
+        return (
+          <div>
+            <div>
+              {arrival}
+            </div>
+
+            <div>
+              {departure}
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div>
+          {departure ||
+            arrival ||
+            "--:--"}
+        </div>
+      );
+    };
+
+  /* =======================================================
+     STATION ROW
+  ======================================================= */
+
+  const StationRow = ({
+    stop,
+    first = false,
+    last = false,
+  }) => {
     return (
-      days * 24 * 60 +
-      hours * 60 +
-      minutes
+      <div
+        style={{
+          display:
+            "grid",
+
+          gridTemplateColumns:
+            "100px 40px minmax(0,1fr)",
+
+          alignItems:
+            "center",
+
+          minHeight:
+            "82px",
+        }}
+      >
+        <div
+          style={{
+            fontSize:
+              "16px",
+
+            color:
+              first || last
+                ? "#0f2745"
+                : "#7b8fa8",
+
+            fontWeight:
+              first || last
+                ? 700
+                : 500,
+
+            lineHeight:
+              1.35,
+          }}
+        >
+          {renderStopTimes(
+            stop
+          )}
+        </div>
+
+        <div
+          style={{
+            height:
+              "82px",
+
+            display:
+              "flex",
+
+            alignItems:
+              "center",
+
+            justifyContent:
+              "center",
+
+            position:
+              "relative",
+          }}
+        >
+          <span
+            style={{
+              width:
+                first || last
+                  ? "12px"
+                  : "10px",
+
+              height:
+                first || last
+                  ? "12px"
+                  : "10px",
+
+              borderRadius:
+                "50%",
+
+              background:
+                "#a72e49",
+
+              position:
+                "relative",
+
+              zIndex:
+                5,
+            }}
+          />
+        </div>
+
+        <div
+          style={{
+            paddingLeft:
+              "8px",
+
+            fontSize:
+              "16px",
+
+            color:
+              "#173453",
+
+            fontWeight:
+              first || last
+                ? 700
+                : 500,
+
+            minWidth:
+              0,
+          }}
+        >
+          <div>
+            {stop.stationName}
+          </div>
+
+          {stop.platform && (
+            <span
+              style={{
+                display:
+                  "inline-block",
+
+                marginTop:
+                  "5px",
+
+                padding:
+                  "3px 7px",
+
+                background:
+                  "#f0f3f6",
+
+                borderRadius:
+                  "4px",
+
+                color:
+                  "#61758d",
+
+                fontSize:
+                  "11px",
+
+                fontWeight:
+                  700,
+              }}
+            >
+              Pl.{" "}
+              {stop.platform}
+            </span>
+          )}
+        </div>
+      </div>
     );
   };
 
-  const getProductName = (connection) => {
-    if (
-      connection.products &&
-      connection.products.length > 0
-    ) {
-      return connection.products.join(" ");
-    }
+  /* =======================================================
+     COMPACT TIMELINE
+  ======================================================= */
 
-    return "Train";
-  };
+  const CompactTimeline =
+    ({
+      connection,
+      index,
+      stops,
+    }) => {
+      const firstStop =
+        stops[0];
 
-  const handleNavigation = (page) => {
-    if (page === "Plan Journey") {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      const lastStop =
+        stops[
+          stops.length - 1
+        ];
 
-      return;
-    }
+      const hasIntermediate =
+        stops.length > 2;
 
-    alert(
-      `${page} will be available when the team module is connected.`
-    );
-  };
+      return (
+        <div
+          style={{
+            padding:
+              "20px 18px 8px",
+          }}
+        >
+          <div
+            style={{
+              display:
+                "flex",
+
+              alignItems:
+                "center",
+
+              gap:
+                "9px",
+
+              marginBottom:
+                "12px",
+            }}
+          >
+            <span
+              style={{
+                background:
+                  "#a72e49",
+
+                color:
+                  "#ffffff",
+
+                padding:
+                  "6px 11px",
+
+                borderRadius:
+                  "16px",
+
+                fontSize:
+                  "14px",
+
+                fontWeight:
+                  800,
+              }}
+            >
+              {getProductName(
+                connection
+              )}
+            </span>
+
+            <span
+              style={{
+                fontSize:
+                  "17px",
+
+                color:
+                  "#163250",
+              }}
+            >
+              Direction{" "}
+              {getDirection(
+                connection
+              )}
+            </span>
+          </div>
+
+          <div
+            style={{
+              position:
+                "relative",
+
+              maxWidth:
+                "720px",
+            }}
+          >
+            <div
+              style={{
+                position:
+                  "absolute",
+
+                left:
+                  "120px",
+
+                top:
+                  "41px",
+
+                bottom:
+                  "41px",
+
+                width:
+                  "2px",
+
+                background:
+                  "#a72e49",
+
+                zIndex:
+                  1,
+              }}
+            />
+
+            <StationRow
+              stop={
+                firstStop
+              }
+              first
+            />
+
+            {hasIntermediate && (
+              <button
+                type="button"
+                onClick={() =>
+                  toggleStops(
+                    index
+                  )
+                }
+                title="Show intermediate stations"
+                style={{
+                  position:
+                    "absolute",
+
+                  left:
+                    "120px",
+
+                  top:
+                    "50%",
+
+                  transform:
+                    "translate(-50%, -50%)",
+
+                  width:
+                    "26px",
+
+                  height:
+                    "26px",
+
+                  padding:
+                    0,
+
+                  border:
+                    "1px solid #a72e49",
+
+                  borderRadius:
+                    "50%",
+
+                  background:
+                    "#ffffff",
+
+                  color:
+                    "#a72e49",
+
+                  fontSize:
+                    "19px",
+
+                  lineHeight:
+                    "22px",
+
+                  cursor:
+                    "pointer",
+
+                  display:
+                    "flex",
+
+                  alignItems:
+                    "center",
+
+                  justifyContent:
+                    "center",
+
+                  zIndex:
+                    20,
+
+                  boxShadow:
+                    "0 2px 6px rgba(167,46,73,0.12)",
+                }}
+              >
+                +
+              </button>
+            )}
+
+            <StationRow
+              stop={
+                lastStop
+              }
+              last
+            />
+          </div>
+        </div>
+      );
+    };
+
+  /* =======================================================
+     EXPANDED TIMELINE
+  ======================================================= */
+
+  const ExpandedTimeline =
+    ({
+      connection,
+      index,
+      stops,
+    }) => {
+      const hasIntermediate =
+        stops.length > 2;
+
+      return (
+        <div
+          style={{
+            padding:
+              "20px 18px 8px",
+          }}
+        >
+          <div
+            style={{
+              display:
+                "flex",
+
+              alignItems:
+                "center",
+
+              gap:
+                "9px",
+
+              marginBottom:
+                "12px",
+            }}
+          >
+            <span
+              style={{
+                background:
+                  "#a72e49",
+
+                color:
+                  "#ffffff",
+
+                padding:
+                  "6px 11px",
+
+                borderRadius:
+                  "16px",
+
+                fontSize:
+                  "14px",
+
+                fontWeight:
+                  800,
+              }}
+            >
+              {getProductName(
+                connection
+              )}
+            </span>
+
+            <span
+              style={{
+                fontSize:
+                  "17px",
+
+                color:
+                  "#163250",
+              }}
+            >
+              Direction{" "}
+              {getDirection(
+                connection
+              )}
+            </span>
+          </div>
+
+          <div
+            style={{
+              position:
+                "relative",
+
+              maxWidth:
+                "720px",
+            }}
+          >
+            <div
+              style={{
+                position:
+                  "absolute",
+
+                left:
+                  "120px",
+
+                top:
+                  "41px",
+
+                bottom:
+                  "41px",
+
+                width:
+                  "2px",
+
+                background:
+                  "#a72e49",
+
+                zIndex:
+                  1,
+              }}
+            />
+
+            {stops.map(
+              (
+                stop,
+                stopIndex
+              ) => (
+                <StationRow
+                  key={
+                    stop.key
+                  }
+                  stop={
+                    stop
+                  }
+                  first={
+                    stopIndex ===
+                    0
+                  }
+                  last={
+                    stopIndex ===
+                    stops.length - 1
+                  }
+                />
+              )
+            )}
+
+            {hasIntermediate && (
+              <button
+                type="button"
+                onClick={() =>
+                  toggleStops(
+                    index
+                  )
+                }
+                title="Hide intermediate stations"
+                style={{
+                  position:
+                    "absolute",
+
+                  left:
+                    "120px",
+
+                  top:
+                    "50%",
+
+                  transform:
+                    "translate(-50%, -50%)",
+
+                  width:
+                    "26px",
+
+                  height:
+                    "26px",
+
+                  padding:
+                    0,
+
+                  border:
+                    "1px solid #a72e49",
+
+                  borderRadius:
+                    "50%",
+
+                  background:
+                    "#ffffff",
+
+                  color:
+                    "#a72e49",
+
+                  fontSize:
+                    "19px",
+
+                  lineHeight:
+                    "22px",
+
+                  cursor:
+                    "pointer",
+
+                  display:
+                    "flex",
+
+                  alignItems:
+                    "center",
+
+                  justifyContent:
+                    "center",
+
+                  zIndex:
+                    20,
+
+                  boxShadow:
+                    "0 2px 6px rgba(167,46,73,0.12)",
+                }}
+              >
+                −
+              </button>
+            )}
+          </div>
+        </div>
+      );
+    };
+
+  /* =======================================================
+     STYLES
+  ======================================================= */
 
   const styles = {
     page: {
-      minHeight: "100vh",
-      background: "#f6f8fb",
-      color: "#0f1b33",
+      width:
+        "100%",
+
+      minHeight:
+        "100vh",
+
+      background:
+        "#f6f8fb",
+
+      color:
+        "#0f1b33",
+
       fontFamily:
         "Inter, Arial, Helvetica, sans-serif",
-      display: "flex",
-    },
 
-    sidebar: {
-      width: "315px",
-      background: "#ffffff",
-      borderRight: "1px solid #e3e8ef",
-      display: "flex",
-      flexDirection: "column",
-      position: "fixed",
-      left: 0,
-      top: 0,
-      bottom: 0,
-      zIndex: 20,
-    },
-
-    logoArea: {
-      height: "92px",
-      display: "flex",
-      alignItems: "center",
-      padding: "0 28px",
-      borderBottom: "1px solid #f0f2f5",
-    },
-
-    logoIcon: {
-      width: "34px",
-      height: "34px",
-      borderRadius: "8px",
-      background:
-        "linear-gradient(135deg, #29c8ec, #a93854)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      marginRight: "12px",
-    },
-
-    logoText: {
-      fontSize: "24px",
-      fontWeight: 800,
-      color: "#111827",
-    },
-
-    lite: {
-      marginLeft: "8px",
-      padding: "3px 8px",
-      background: "#fff0f3",
-      color: "#a52e49",
-      borderRadius: "7px",
-      fontSize: "12px",
-      fontWeight: 700,
-    },
-
-    nav: {
-      padding: "18px 14px",
-      display: "flex",
-      flexDirection: "column",
-      gap: "8px",
-    },
-
-    navButton: {
-      width: "100%",
-      border: "none",
-      background: "transparent",
-      padding: "15px 16px",
-      borderRadius: "16px",
-      display: "flex",
-      alignItems: "center",
-      gap: "15px",
-      fontSize: "17px",
-      color: "#18304f",
-      textAlign: "left",
-      cursor: "pointer",
-    },
-
-    activeNav: {
-      background: "#fff0f3",
-      color: "#a52e49",
-      fontWeight: 700,
-    },
-
-    navIcon: {
-      width: "25px",
-      height: "25px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      flexShrink: 0,
-    },
-
-    navBadge: {
-      marginLeft: "auto",
-      width: "30px",
-      height: "30px",
-      borderRadius: "50%",
-      background: "#fff1f4",
-      color: "#a52e49",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      fontWeight: 700,
-      fontSize: "14px",
-    },
-
-    resetArea: {
-      marginTop: "auto",
-      padding: "22px 24px",
-      borderTop: "1px solid #e8edf3",
-    },
-
-    resetButton: {
-      border: "none",
-      background: "transparent",
-      color: "#8295b1",
-      fontSize: "16px",
-      cursor: "pointer",
-      display: "flex",
-      alignItems: "center",
-      gap: "10px",
-    },
-
-    main: {
-      marginLeft: "315px",
-      width: "calc(100% - 315px)",
-      minHeight: "100vh",
-    },
-
-    header: {
-      height: "86px",
-      background: "#ffffff",
-      borderBottom: "1px solid #e3e8ef",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      padding: "0 42px",
-    },
-
-    breadcrumb: {
-      color: "#94a3b8",
-      fontSize: "16px",
-      marginBottom: "4px",
-    },
-
-    breadcrumbActive: {
-      color: "#1c2c45",
-      fontWeight: 700,
-    },
-
-    pageTitle: {
-      margin: 0,
-      fontSize: "25px",
-      fontWeight: 800,
-    },
-
-    headerActions: {
-      display: "flex",
-      alignItems: "center",
-      gap: "14px",
-    },
-
-    storageBadge: {
-      display: "flex",
-      alignItems: "center",
-      gap: "9px",
-      border: "1px solid #9ce7ca",
-      background: "#edfff7",
-      color: "#08754f",
-      padding: "10px 17px",
-      borderRadius: "24px",
-      fontSize: "15px",
-      fontWeight: 700,
-    },
-
-    greenDot: {
-      width: "10px",
-      height: "10px",
-      background: "#13b67a",
-      borderRadius: "50%",
-    },
-
-    countCircle: {
-      minWidth: "25px",
-      height: "25px",
-      padding: "0 6px",
-      borderRadius: "50%",
-      background: "#c9f5e3",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-
-    savedTripsButton: {
-      border: "1px solid #dbe3ec",
-      background: "#ffffff",
-      color: "#273952",
-      padding: "11px 19px",
-      borderRadius: "24px",
-      fontSize: "15px",
-      fontWeight: 700,
-      cursor: "pointer",
+      boxSizing:
+        "border-box",
     },
 
     content: {
-      padding: "30px 42px 42px",
+      width:
+        "100%",
+
+      maxWidth:
+        "1600px",
+
+      margin:
+        "0 auto",
+
+      padding:
+        "20px",
+
+      boxSizing:
+        "border-box",
     },
 
+    /* =====================================================
+       SEARCH CARD
+    ===================================================== */
+
     searchCard: {
-      background: "#ffffff",
-      border: "1px solid #e1e7ef",
-      borderRadius: "20px",
-      padding: "35px",
+      width:
+        "100%",
+
+      background:
+        "#ffffff",
+
+      border:
+        "1px solid #e1e7ef",
+
+      borderRadius:
+        "16px",
+
+      padding:
+        "28px",
+
+      boxSizing:
+        "border-box",
+
       boxShadow:
-        "0 8px 22px rgba(31, 48, 71, 0.06)",
+        "0 8px 22px rgba(31,48,71,0.05)",
     },
 
     searchTop: {
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "flex-start",
-      gap: "25px",
-      paddingBottom: "26px",
-      borderBottom: "1px solid #edf0f4",
+      display:
+        "flex",
+
+      justifyContent:
+        "space-between",
+
+      alignItems:
+        "flex-start",
+
+      gap:
+        "24px",
+
+      paddingBottom:
+        "22px",
+
+      borderBottom:
+        "1px solid #edf0f4",
     },
 
     searchTitleArea: {
-      flex: 1,
+      flex:
+        1,
+
+      minWidth:
+        0,
     },
 
     searchTitle: {
-      margin: 0,
-      fontSize: "24px",
-      fontWeight: 800,
-      display: "inline-block",
+      margin:
+        0,
+
+      fontSize:
+        "23px",
+
+      fontWeight:
+        800,
+
+      color:
+        "#0f2039",
+
+      display:
+        "inline-block",
+
+      lineHeight:
+        "1.2",
     },
 
     liveBadge: {
-      marginLeft: "12px",
-      padding: "9px 13px",
-      borderRadius: "25px",
-      background: "#fff0f3",
-      color: "#aa2e49",
-      fontWeight: 700,
-      fontSize: "14px",
-      display: "inline-block",
+      marginLeft:
+        "10px",
+
+      padding:
+        "8px 11px",
+
+      borderRadius:
+        "20px",
+
+      background:
+        "#fff0f3",
+
+      color:
+        "#a72e49",
+
+      fontWeight:
+        700,
+
+      fontSize:
+        "12px",
+
+      display:
+        "inline-block",
+
+      verticalAlign:
+        "middle",
     },
 
     searchSubtitle: {
-      margin: "7px 0 0",
-      fontSize: "19px",
-      color: "#182c49",
+      margin:
+        "7px 0 0",
+
+      fontSize:
+        "15px",
+
+      color:
+        "#617792",
     },
 
     quickArea: {
-      display: "flex",
-      alignItems: "center",
-      gap: "9px",
-      flexWrap: "wrap",
-      justifyContent: "flex-end",
+      flexShrink:
+        0,
+
+      display:
+        "flex",
+
+      alignItems:
+        "center",
+
+      justifyContent:
+        "flex-end",
+
+      gap:
+        "8px",
+
+      flexWrap:
+        "wrap",
+
+      maxWidth:
+        "540px",
     },
 
     quickLabel: {
-      color: "#8ca0ba",
-      fontSize: "15px",
-      marginRight: "2px",
-      display: "flex",
-      alignItems: "center",
-      gap: "4px",
+      display:
+        "flex",
+
+      alignItems:
+        "center",
+
+      gap:
+        "4px",
+
+      color:
+        "#8ca0ba",
+
+      fontSize:
+        "13px",
     },
 
     quickButton: {
-      background: "#ffffff",
-      border: "1px solid #dbe3ec",
-      color: "#253b58",
-      padding: "8px 13px",
-      borderRadius: "9px",
-      cursor: "pointer",
-      fontSize: "14px",
+      height:
+        "35px",
+
+      padding:
+        "0 11px",
+
+      border:
+        "1px solid #dbe3ec",
+
+      borderRadius:
+        "8px",
+
+      background:
+        "#ffffff",
+
+      color:
+        "#253b58",
+
+      cursor:
+        "pointer",
+
+      fontSize:
+        "13px",
+
+      fontWeight:
+        600,
+
+      whiteSpace:
+        "nowrap",
     },
 
+    /* =====================================================
+       STATION FORM
+    ===================================================== */
+
     formGrid: {
-      display: "grid",
+      display:
+        "grid",
+
       gridTemplateColumns:
-        "1fr 70px 1fr",
-      gap: "22px",
-      alignItems: "end",
-      marginTop: "30px",
+        "minmax(0,1fr) 58px minmax(0,1fr)",
+
+      gap:
+        "20px",
+
+      alignItems:
+        "end",
+
+      marginTop:
+        "25px",
     },
 
     field: {
-      position: "relative",
+      position:
+        "relative",
+
+      minWidth:
+        0,
     },
 
     labelRow: {
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      marginBottom: "9px",
+      display:
+        "flex",
+
+      justifyContent:
+        "space-between",
+
+      alignItems:
+        "center",
+
+      marginBottom:
+        "8px",
     },
 
     label: {
-      fontSize: "14px",
-      fontWeight: 800,
-      color: "#263c59",
-      letterSpacing: "0.3px",
+      fontSize:
+        "13px",
+
+      fontWeight:
+        800,
+
+      color:
+        "#263c59",
+
+      letterSpacing:
+        "0.2px",
     },
 
     via: {
-      color: "#aa2e49",
-      fontWeight: 700,
-      fontSize: "14px",
-      cursor: "pointer",
+      color:
+        "#a72e49",
+
+      fontWeight:
+        700,
+
+      fontSize:
+        "13px",
+
+      cursor:
+        "pointer",
     },
 
     inputWrapper: {
-      position: "relative",
-    },
+      position:
+        "relative",
 
-    inputIcon: {
-      position: "absolute",
-      left: "17px",
-      top: "50%",
-      transform: "translateY(-50%)",
-      color: "#9aabc0",
-      display: "flex",
-      alignItems: "center",
-      pointerEvents: "none",
+      width:
+        "100%",
     },
 
     input: {
-      width: "100%",
-      boxSizing: "border-box",
-      height: "54px",
-      border: "1px solid #dce4ed",
-      background: "#fbfcfe",
-      borderRadius: "13px",
-      padding: "0 18px 0 48px",
-      fontSize: "17px",
-      color: "#172944",
-      outline: "none",
+      width:
+        "100%",
+
+      height:
+        "54px",
+
+      boxSizing:
+        "border-box",
+
+      border:
+        "1px solid #dce4ed",
+
+      borderRadius:
+        "12px",
+
+      background:
+        "#fbfcfe",
+
+      padding:
+        "0 45px",
+
+      fontSize:
+        "16px",
+
+      color:
+        "#172944",
+
+      outline:
+        "none",
+    },
+
+    inputIcon: {
+      position:
+        "absolute",
+
+      left:
+        "16px",
+
+      top:
+        "50%",
+
+      transform:
+        "translateY(-50%)",
+
+      color:
+        "#96a8bd",
+
+      display:
+        "flex",
+
+      alignItems:
+        "center",
+
+      pointerEvents:
+        "none",
+
+      zIndex:
+        2,
     },
 
     suggestionBox: {
-      position: "absolute",
-      left: 0,
-      right: 0,
-      top: "64px",
-      background: "#ffffff",
-      border: "1px solid #dce4ed",
-      borderRadius: "12px",
+      position:
+        "absolute",
+
+      left:
+        0,
+
+      right:
+        0,
+
+      top:
+        "64px",
+
+      zIndex:
+        1000,
+
+      background:
+        "#ffffff",
+
+      border:
+        "1px solid #dce4ed",
+
+      borderRadius:
+        "11px",
+
+      overflow:
+        "hidden",
+
       boxShadow:
-        "0 10px 25px rgba(31, 48, 71, 0.15)",
-      zIndex: 100,
-      overflow: "hidden",
+        "0 12px 28px rgba(31,48,71,0.15)",
     },
 
     suggestion: {
-      padding: "13px 17px",
-      cursor: "pointer",
-      borderBottom: "1px solid #f0f2f5",
-      fontSize: "15px",
-      display: "flex",
-      alignItems: "center",
-      gap: "8px",
+      minHeight:
+        "46px",
+
+      padding:
+        "10px 15px",
+
+      display:
+        "flex",
+
+      alignItems:
+        "center",
+
+      gap:
+        "8px",
+
+      borderBottom:
+        "1px solid #eff2f5",
+
+      color:
+        "#213954",
+
+      fontSize:
+        "14px",
+
+      cursor:
+        "pointer",
+
+      background:
+        "#ffffff",
+    },
+
+    swapArea: {
+      height:
+        "54px",
+
+      display:
+        "flex",
+
+      alignItems:
+        "center",
+
+      justifyContent:
+        "center",
     },
 
     swapButton: {
-      width: "48px",
-      height: "48px",
-      borderRadius: "50%",
-      border: "1px solid #dce4ed",
-      background: "#ffffff",
-      color: "#6f829d",
-      cursor: "pointer",
+      width:
+        "46px",
+
+      height:
+        "46px",
+
+      border:
+        "1px solid #dce4ed",
+
+      borderRadius:
+        "50%",
+
+      background:
+        "#ffffff",
+
+      color:
+        "#71839a",
+
+      cursor:
+        "pointer",
+
+      display:
+        "flex",
+
+      alignItems:
+        "center",
+
+      justifyContent:
+        "center",
+
       boxShadow:
-        "0 2px 5px rgba(20, 40, 60, 0.04)",
-      alignSelf: "center",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
+        "0 2px 6px rgba(20,40,60,0.05)",
     },
 
-    bottomGrid: {
-      display: "grid",
+    /* =====================================================
+       BOTTOM ROW
+    ===================================================== */
+
+    bottomRow: {
+      marginTop:
+        "22px",
+
+      display:
+        "grid",
+
       gridTemplateColumns:
-        "1fr 70px 1fr",
-      gap: "22px",
-      marginTop: "23px",
-      alignItems: "end",
+        "minmax(0,1.55fr) minmax(150px,180px) minmax(0,1.15fr)",
+
+      gap:
+        "18px",
+
+      alignItems:
+        "end",
+
+      width:
+        "100%",
     },
 
-    dateTimeGroup: {
-      display: "flex",
-      gap: "14px",
+    dateField: {
+      minWidth:
+        0,
+
+      width:
+        "100%",
+    },
+
+    dateTimeRow: {
+      display:
+        "grid",
+
+      gridTemplateColumns:
+        "minmax(0,1fr) 125px",
+
+      gap:
+        "12px",
+
+      width:
+        "100%",
+
+      alignItems:
+        "center",
     },
 
     dateInput: {
-      flex: 1,
-      height: "54px",
-      border: "1px solid #dce4ed",
-      background: "#fbfcfe",
-      borderRadius: "13px",
-      padding: "0 16px",
-      fontSize: "17px",
-      color: "#172944",
-      outline: "none",
+      width:
+        "100%",
+
+      height:
+        "54px",
+
+      boxSizing:
+        "border-box",
+
+      border:
+        "1px solid #dce4ed",
+
+      borderRadius:
+        "12px",
+
+      background:
+        "#fbfcfe",
+
+      padding:
+        "0 13px",
+
+      fontSize:
+        "15px",
+
+      color:
+        "#173453",
+
+      outline:
+        "none",
     },
 
     timeInput: {
-      width: "130px",
-      height: "54px",
-      border: "1px solid #dce4ed",
-      background: "#fbfcfe",
-      borderRadius: "13px",
-      padding: "0 12px",
-      fontSize: "17px",
-      color: "#172944",
-      outline: "none",
+      width:
+        "125px",
+
+      height:
+        "54px",
+
+      boxSizing:
+        "border-box",
+
+      border:
+        "1px solid #dce4ed",
+
+      borderRadius:
+        "12px",
+
+      background:
+        "#fbfcfe",
+
+      padding:
+        "0 12px",
+
+      fontSize:
+        "15px",
+
+      color:
+        "#173453",
+
+      outline:
+        "none",
     },
 
-    depBadge: {
-      width: "52px",
-      height: "32px",
-      borderRadius: "9px",
-      background: "#fff0f3",
-      color: "#a52e49",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      fontWeight: 700,
-      marginBottom: "11px",
+    timeModeArea: {
+      height:
+        "54px",
+
+      display:
+        "flex",
+
+      alignItems:
+        "center",
+
+      justifyContent:
+        "center",
+
+      width:
+        "100%",
+    },
+
+    depArrGroup: {
+      width:
+        "100%",
+
+      height:
+        "54px",
+
+      display:
+        "flex",
+
+      alignItems:
+        "center",
+
+      justifyContent:
+        "center",
+
+      gap:
+        "8px",
+
+      whiteSpace:
+        "nowrap",
+    },
+
+    modeText: {
+      fontSize:
+        "14px",
+
+      fontWeight:
+        600,
+
+      color:
+        "#243a56",
+
+      lineHeight:
+        1,
+    },
+
+    modeTextActive: {
+      color:
+        "#a72e49",
+
+      fontWeight:
+        800,
+    },
+
+    modeSwitch: {
+      position:
+        "relative",
+
+      width:
+        "58px",
+
+      height:
+        "30px",
+
+      flexShrink:
+        0,
+
+      border:
+        "none",
+
+      borderRadius:
+        "18px",
+
+      background:
+        "#a72e49",
+
+      padding:
+        0,
+
+      cursor:
+        "pointer",
+    },
+
+    modeKnob: {
+      position:
+        "absolute",
+
+      top:
+        "4px",
+
+      width:
+        "22px",
+
+      height:
+        "22px",
+
+      borderRadius:
+        "50%",
+
+      background:
+        "#ffffff",
+
+      boxShadow:
+        "0 1px 3px rgba(0,0,0,0.16)",
+
+      transition:
+        "left 0.18s ease",
     },
 
     searchButton: {
-      height: "54px",
-      border: "none",
-      borderRadius: "13px",
-      background: "#a72e49",
-      color: "#ffffff",
-      fontSize: "17px",
-      fontWeight: 800,
-      cursor: "pointer",
+      width:
+        "100%",
+
+      height:
+        "54px",
+
+      border:
+        "none",
+
+      borderRadius:
+        "10px",
+
+      background:
+        "#a72e49",
+
+      color:
+        "#ffffff",
+
+      fontSize:
+        "15px",
+
+      fontWeight:
+        800,
+
+      cursor:
+        "pointer",
+
+      display:
+        "flex",
+
+      alignItems:
+        "center",
+
+      justifyContent:
+        "center",
+
+      gap:
+        "9px",
+
       boxShadow:
-        "0 5px 10px rgba(167, 46, 73, 0.18)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      gap: "10px",
+        "0 5px 12px rgba(167,46,73,0.16)",
     },
 
-    resultCard: {
-      marginTop: "30px",
-      background: "#ffffff",
-      border: "1px solid #e1e7ef",
-      borderRadius: "20px",
-      overflow: "hidden",
-      boxShadow:
-        "0 8px 22px rgba(31, 48, 71, 0.05)",
-    },
-
-    resultHeader: {
-      padding: "27px 25px",
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      borderBottom: "1px solid #e7ebf0",
-    },
-
-    resultTitle: {
-      margin: 0,
-      fontSize: "21px",
-      fontWeight: 800,
-    },
-
-    resultSubtitle: {
-      margin: "5px 0 0",
-      color: "#7890ad",
-      fontSize: "15px",
-    },
-
-    routeCount: {
-      background: "#edf2f7",
-      color: "#31465f",
-      padding: "7px 13px",
-      borderRadius: "18px",
-      fontSize: "14px",
-      fontWeight: 700,
-    },
-
-    route: {
-      minHeight: "130px",
-      padding: "0 25px",
-      display: "grid",
-      gridTemplateColumns:
-        "120px 1fr 120px 85px 130px",
-      gap: "18px",
-      alignItems: "center",
-      borderBottom: "1px solid #e7ebf0",
-    },
-
-    time: {
-      fontSize: "30px",
-      fontWeight: 800,
-      color: "#0b1c38",
-      lineHeight: 1,
-    },
-
-    stationName: {
-      marginTop: "7px",
-      fontSize: "15px",
-      color: "#233c59",
-    },
-
-    platform: {
-      display: "inline-block",
-      marginTop: "7px",
-      padding: "4px 8px",
-      background: "#f0f3f6",
-      borderRadius: "5px",
-      color: "#5c6f86",
-      fontSize: "12px",
-      fontWeight: 700,
-    },
-
-    timeline: {
-      position: "relative",
-      height: "65px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-
-    line: {
-      position: "absolute",
-      left: 0,
-      right: 0,
-      height: "2px",
-      background: "#d7dee8",
-      top: "50%",
-    },
-
-    leftDot: {
-      position: "absolute",
-      left: 0,
-      width: "10px",
-      height: "10px",
-      border: "2px solid #a72e49",
-      background: "#ffffff",
-      borderRadius: "50%",
-      top: "calc(50% - 5px)",
-      zIndex: 2,
-    },
-
-    rightDot: {
-      position: "absolute",
-      right: 0,
-      width: "10px",
-      height: "10px",
-      background: "#a72e49",
-      borderRadius: "50%",
-      top: "calc(50% - 5px)",
-      zIndex: 2,
-    },
-
-    duration: {
-      position: "relative",
-      zIndex: 3,
-      background: "#ffffff",
-      padding: "0 8px",
-      color: "#627994",
-      fontSize: "13px",
-      display: "flex",
-      alignItems: "center",
-      gap: "4px",
-    },
-
-    direct: {
-      position: "absolute",
-      top: "55%",
-      color: "#00a66a",
-      fontWeight: 700,
-      fontSize: "13px",
-    },
-
-    transfer: {
-      position: "absolute",
-      top: "56%",
-      color: "#8a99ae",
-      fontSize: "13px",
-    },
-
-    product: {
-      background: "#f0f4f8",
-      border: "1px solid #dce4ec",
-      borderRadius: "8px",
-      padding: "7px 10px",
-      color: "#31455e",
-      fontSize: "13px",
-      fontWeight: 700,
-      textAlign: "center",
-    },
-
-    saveButton: {
-      height: "38px",
-      padding: "0 15px",
-      border: "1px solid #dce4ec",
-      borderRadius: "20px",
-      background: "#ffffff",
-      color: "#243a57",
-      fontSize: "14px",
-      fontWeight: 700,
-      cursor: "pointer",
-    },
-
-    savedButton: {
-      height: "38px",
-      padding: "0 15px",
-      border: "1px solid #a8e8ce",
-      borderRadius: "20px",
-      background: "#d8faeb",
-      color: "#00875b",
-      fontSize: "14px",
-      fontWeight: 700,
-      cursor: "default",
-    },
+    /* =====================================================
+       ERROR
+    ===================================================== */
 
     message: {
-      marginTop: "20px",
-      padding: "15px 18px",
-      borderRadius: "12px",
-      background: "#fff5f6",
-      border: "1px solid #ffd5dc",
-      color: "#a52e49",
-      fontSize: "15px",
+      marginTop:
+        "17px",
+
+      padding:
+        "13px 16px",
+
+      borderRadius:
+        "10px",
+
+      background:
+        "#fff5f6",
+
+      border:
+        "1px solid #ffd5dc",
+
+      color:
+        "#a72e49",
+
+      fontSize:
+        "14px",
     },
 
     loading: {
-      marginTop: "25px",
-      textAlign: "center",
-      padding: "25px",
-      color: "#71839b",
-      fontSize: "16px",
+      marginTop:
+        "18px",
+
+      padding:
+        "20px",
+
+      textAlign:
+        "center",
+
+      color:
+        "#70849c",
+
+      fontSize:
+        "15px",
     },
 
-    footer: {
-      background: "#ffffff",
-      borderTop: "1px solid #e1e7ef",
-      marginTop: "30px",
-      minHeight: "75px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      padding: "0 42px",
+    /* =====================================================
+       RESULTS
+    ===================================================== */
+
+    resultsWrapper: {
+      width:
+        "100%",
+
+      marginTop:
+        "26px",
     },
 
-    footerLeft: {
-      display: "flex",
-      alignItems: "center",
-      gap: "12px",
-      color: "#213754",
-      fontSize: "14px",
+    resultHeader: {
+      minHeight:
+        "80px",
+
+      padding:
+        "18px 24px",
+
+      boxSizing:
+        "border-box",
+
+      display:
+        "flex",
+
+      justifyContent:
+        "space-between",
+
+      alignItems:
+        "center",
+
+      gap:
+        "20px",
+
+      background:
+        "#ffffff",
+
+      border:
+        "1px solid #e1e7ef",
+
+      borderBottom:
+        "none",
+
+      borderRadius:
+        "16px 16px 0 0",
     },
 
-    footerRight: {
-      display: "flex",
-      alignItems: "center",
-      gap: "15px",
-      color: "#7187a2",
-      fontSize: "14px",
+    resultTitle: {
+      margin:
+        0,
+
+      fontSize:
+        "20px",
+
+      fontWeight:
+        800,
+
+      color:
+        "#11243e",
     },
 
-    footerButton: {
-      border: "none",
-      background: "transparent",
-      color: "#7187a2",
-      cursor: "pointer",
-      fontSize: "14px",
-      padding: 0,
+    resultSubtitle: {
+      margin:
+        "5px 0 0",
+
+      color:
+        "#7a8fa8",
+
+      fontSize:
+        "14px",
     },
 
-    footerActive: {
-      color: "#a52e49",
-      fontWeight: 700,
+    routeCount: {
+      flexShrink:
+        0,
+
+      background:
+        "#edf2f7",
+
+      color:
+        "#31465f",
+
+      padding:
+        "7px 12px",
+
+      borderRadius:
+        "17px",
+
+      fontSize:
+        "13px",
+
+      fontWeight:
+        700,
+
+      whiteSpace:
+        "nowrap",
+    },
+
+    routeCard: {
+      width:
+        "100%",
+
+      boxSizing:
+        "border-box",
+
+      background:
+        "#ffffff",
+
+      overflow:
+        "hidden",
+
+      border:
+        "1px solid #e1e7ef",
+    },
+
+    routeTop: {
+      minHeight:
+        "124px",
+
+      padding:
+        "0 20px",
+
+      display:
+        "grid",
+
+      gridTemplateColumns:
+        "120px minmax(220px,1fr) 120px 82px 145px",
+
+      gap:
+        "18px",
+
+      alignItems:
+        "center",
+
+      boxSizing:
+        "border-box",
+    },
+
+    resultTime: {
+      fontSize:
+        "29px",
+
+      fontWeight:
+        800,
+
+      color:
+        "#0b1c38",
+
+      lineHeight:
+        1,
+
+      letterSpacing:
+        "-0.4px",
+    },
+
+    stationName: {
+      marginTop:
+        "6px",
+
+      fontSize:
+        "14px",
+
+      color:
+        "#233c59",
+
+      whiteSpace:
+        "nowrap",
+
+      overflow:
+        "hidden",
+
+      textOverflow:
+        "ellipsis",
+    },
+
+    platform: {
+      display:
+        "inline-block",
+
+      marginTop:
+        "6px",
+
+      padding:
+        "3px 7px",
+
+      background:
+        "#f0f3f6",
+
+      borderRadius:
+        "4px",
+
+      color:
+        "#5c6f86",
+
+      fontSize:
+        "11px",
+
+      fontWeight:
+        700,
+    },
+
+    /* =====================================================
+       HORIZONTAL TIMELINE
+    ===================================================== */
+
+    horizontalTimeline: {
+      position:
+        "relative",
+
+      height:
+        "72px",
+
+      minWidth:
+        0,
+
+      display:
+        "block",
+    },
+
+    horizontalLine: {
+      position:
+        "absolute",
+
+      left:
+        0,
+
+      right:
+        0,
+
+      top:
+        "29px",
+
+      height:
+        "2px",
+
+      background:
+        "#d7dee8",
+
+      zIndex:
+        1,
+    },
+
+    leftDot: {
+      position:
+        "absolute",
+
+      left:
+        0,
+
+      top:
+        "24px",
+
+      width:
+        "10px",
+
+      height:
+        "10px",
+
+      border:
+        "2px solid #a72e49",
+
+      borderRadius:
+        "50%",
+
+      background:
+        "#ffffff",
+
+      zIndex:
+        3,
+
+      boxSizing:
+        "border-box",
+    },
+
+    rightDot: {
+      position:
+        "absolute",
+
+      right:
+        0,
+
+      top:
+        "25px",
+
+      width:
+        "10px",
+
+      height:
+        "10px",
+
+      borderRadius:
+        "50%",
+
+      background:
+        "#a72e49",
+
+      zIndex:
+        3,
+    },
+
+    duration: {
+      position:
+        "absolute",
+
+      left:
+        "50%",
+
+      top:
+        "3px",
+
+      transform:
+        "translateX(-50%)",
+
+      zIndex:
+        5,
+
+      display:
+        "flex",
+
+      alignItems:
+        "center",
+
+      justifyContent:
+        "center",
+
+      gap:
+        "4px",
+
+      padding:
+        "0 8px",
+
+      background:
+        "#ffffff",
+
+      color:
+        "#627994",
+
+      fontSize:
+        "12px",
+
+      lineHeight:
+        "18px",
+
+      whiteSpace:
+        "nowrap",
+    },
+
+    direct: {
+      position:
+        "absolute",
+
+      left:
+        "50%",
+
+      top:
+        "45px",
+
+      transform:
+        "translateX(-50%)",
+
+      zIndex:
+        5,
+
+      color:
+        "#00a66a",
+
+      fontWeight:
+        700,
+
+      fontSize:
+        "12px",
+
+      lineHeight:
+        "18px",
+
+      whiteSpace:
+        "nowrap",
+
+      background:
+        "#ffffff",
+
+      padding:
+        "0 5px",
+    },
+
+    transfer: {
+      position:
+        "absolute",
+
+      left:
+        "50%",
+
+      top:
+        "45px",
+
+      transform:
+        "translateX(-50%)",
+
+      zIndex:
+        5,
+
+      color:
+        "#8a99ae",
+
+      fontSize:
+        "12px",
+
+      lineHeight:
+        "18px",
+
+      whiteSpace:
+        "nowrap",
+
+      background:
+        "#ffffff",
+
+      padding:
+        "0 5px",
+    },
+
+    product: {
+      justifySelf:
+        "center",
+
+      padding:
+        "6px 9px",
+
+      background:
+        "#f0f4f8",
+
+      border:
+        "1px solid #dce4ec",
+
+      borderRadius:
+        "7px",
+
+      color:
+        "#31455e",
+
+      fontSize:
+        "12px",
+
+      fontWeight:
+        700,
+
+      textAlign:
+        "center",
+
+      whiteSpace:
+        "nowrap",
+    },
+
+    /* =====================================================
+       SAVE + ARROW
+    ===================================================== */
+
+    routeActions: {
+      height:
+        "40px",
+
+      display:
+        "flex",
+
+      alignItems:
+        "center",
+
+      justifyContent:
+        "flex-end",
+
+      gap:
+        "4px",
+    },
+
+    saveSmallButton: {
+      border:
+        "none",
+
+      background:
+        "transparent",
+
+      color:
+        "#a72e49",
+
+      fontSize:
+        "14px",
+
+      fontWeight:
+        700,
+
+      padding:
+        "6px 3px",
+
+      cursor:
+        "pointer",
+
+      whiteSpace:
+        "nowrap",
+    },
+
+    savedSmallButton: {
+      border:
+        "none",
+
+      background:
+        "transparent",
+
+      color:
+        "#009765",
+
+      fontSize:
+        "14px",
+
+      fontWeight:
+        700,
+
+      padding:
+        "6px 3px",
+
+      cursor:
+        "pointer",
+
+      whiteSpace:
+        "nowrap",
+    },
+
+    arrowButton: {
+      width:
+        "32px",
+
+      height:
+        "32px",
+
+      flexShrink:
+        0,
+
+      padding:
+        0,
+
+      border:
+        "none",
+
+      background:
+        "transparent",
+
+      color:
+        "#a72e49",
+
+      cursor:
+        "pointer",
+
+      borderRadius:
+        "6px",
+
+      display:
+        "flex",
+
+      alignItems:
+        "center",
+
+      justifyContent:
+        "center",
+    },
+
+    detailSection: {
+      borderTop:
+        "1px solid #e7ebf0",
+
+      background:
+        "#ffffff",
+    },
+
+    saveArea: {
+      padding:
+        "4px 18px 20px",
+    },
+
+    saveFullButton: {
+      width:
+        "100%",
+
+      height:
+        "38px",
+
+      border:
+        "none",
+
+      borderRadius:
+        "7px",
+
+      background:
+        "#ffe0e4",
+
+      color:
+        "#a72e49",
+
+      fontSize:
+        "14px",
+
+      fontWeight:
+        500,
+
+      cursor:
+        "pointer",
+    },
+
+    savedFullButton: {
+      width:
+        "100%",
+
+      height:
+        "38px",
+
+      border:
+        "none",
+
+      borderRadius:
+        "7px",
+
+      background:
+        "#d9f8eb",
+
+      color:
+        "#00865c",
+
+      fontSize:
+        "14px",
+
+      fontWeight:
+        700,
+
+      cursor:
+        "pointer",
+
+      display:
+        "flex",
+
+      alignItems:
+        "center",
+
+      justifyContent:
+        "center",
+
+      gap:
+        "6px",
+    },
+
+    /* =====================================================
+       TOAST
+    ===================================================== */
+
+    toast: {
+      position:
+        "fixed",
+
+      top:
+        "20px",
+
+      right:
+        "20px",
+
+      zIndex:
+        9999,
+
+      width:
+        "min(400px, calc(100vw - 40px))",
+
+      minHeight:
+        "64px",
+
+      padding:
+        "13px 15px",
+
+      boxSizing:
+        "border-box",
+
+      borderRadius:
+        "13px",
+
+      background:
+        "#ffffff",
+
+      border:
+        "1px solid #dce6e1",
+
+      boxShadow:
+        "0 14px 32px rgba(25,45,65,0.16)",
+
+      display:
+        "flex",
+
+      alignItems:
+        "center",
+
+      gap:
+        "11px",
+    },
+
+    toastIcon: {
+      width:
+        "34px",
+
+      height:
+        "34px",
+
+      borderRadius:
+        "50%",
+
+      flexShrink:
+        0,
+
+      display:
+        "flex",
+
+      alignItems:
+        "center",
+
+      justifyContent:
+        "center",
+    },
+
+    toastSuccessIcon: {
+      background:
+        "#d9f8eb",
+
+      color:
+        "#00865c",
+    },
+
+    toastRemovedIcon: {
+      background:
+        "#fff0f3",
+
+      color:
+        "#a72e49",
+    },
+
+    toastInfoIcon: {
+      width:
+        "34px",
+
+      height:
+        "34px",
+
+      borderRadius:
+        "50%",
+
+      flexShrink:
+        0,
+
+      background:
+        "#eef3ff",
+
+      color:
+        "#5274b8",
+
+      display:
+        "flex",
+
+      alignItems:
+        "center",
+
+      justifyContent:
+        "center",
+
+      fontWeight:
+        800,
+    },
+
+    toastTitle: {
+      fontSize:
+        "14px",
+
+      fontWeight:
+        800,
+
+      color:
+        "#1d3049",
+
+      marginBottom:
+        "2px",
+    },
+
+    toastText: {
+      fontSize:
+        "13px",
+
+      color:
+        "#71849b",
+
+      lineHeight:
+        1.4,
     },
   };
 
+  /* =======================================================
+     RETURN
+  ======================================================= */
+
   return (
-    <div style={styles.page}>
-      {/* ================= SIDEBAR ================= */}
+    <div
+      style={
+        styles.page
+      }
+    >
+      {/* ===================================================
+          TOAST
+      =================================================== */}
 
-      <aside style={styles.sidebar}>
-        <div style={styles.logoArea}>
-          <div style={styles.logoIcon}>
-            <TrainLogoIcon />
-          </div>
-
-          <span style={styles.logoText}>
-            railtrack
-          </span>
-
-          <span style={styles.lite}>
-            Lite
-          </span>
-        </div>
-
-        <nav style={styles.nav}>
-          {/* PLAN JOURNEY */}
-
-          <button
-            type="button"
-            style={{
-              ...styles.navButton,
-              ...styles.activeNav,
-            }}
-            onClick={() =>
-              handleNavigation("Plan Journey")
-            }
-          >
-            <span style={styles.navIcon}>
-              <PlanIcon />
-            </span>
-
-            <span>Plan Journey</span>
-          </button>
-
-          {/* MY JOURNEYS */}
-
-          <button
-            type="button"
-            style={styles.navButton}
-            onClick={() =>
-              handleNavigation("My Journeys")
-            }
-          >
-            <span style={styles.navIcon}>
-              <JourneysIcon />
-            </span>
-
-            <span>My Journeys</span>
-
-            <span style={styles.navBadge}>
-              {savedJourneys.length}
-            </span>
-          </button>
-
-          {/* TRAVEL STATS */}
-
-          <button
-            type="button"
-            style={styles.navButton}
-            onClick={() =>
-              handleNavigation("Travel Stats")
-            }
-          >
-            <span style={styles.navIcon}>
-              <StatsIcon />
-            </span>
-
-            <span>Travel Stats</span>
-          </button>
-
-          {/* DASHBOARD */}
-
-          <button
-            type="button"
-            style={styles.navButton}
-            onClick={() =>
-              handleNavigation("Dashboard")
-            }
-          >
-            <span style={styles.navIcon}>
-              <DashboardIcon />
-            </span>
-
-            <span>Dashboard</span>
-          </button>
-        </nav>
-
-        {/* RESET */}
-
-        <div style={styles.resetArea}>
-          <button
-            type="button"
-            style={styles.resetButton}
-            onClick={resetLocalTrips}
-          >
-            <TrashIcon />
-            <span>Reset Local Trips</span>
-          </button>
-        </div>
-      </aside>
-
-      {/* ================= MAIN ================= */}
-
-      <main style={styles.main}>
-        {/* HEADER */}
-
-        <header style={styles.header}>
-          <div>
-            <div style={styles.breadcrumb}>
-              Railtrack&nbsp; / &nbsp;
-
-              <span style={styles.breadcrumbActive}>
-                Plan Journey
-              </span>
-            </div>
-
-            <h1 style={styles.pageTitle}>
-              Plan Journey
-            </h1>
-          </div>
-
-          <div style={styles.headerActions}>
-            <div style={styles.storageBadge}>
-              <span style={styles.greenDot}></span>
-
-              LocalStorage
-
-              <span style={styles.countCircle}>
-                {savedJourneys.length}
-              </span>
-            </div>
-
-            <button
-              type="button"
-              style={styles.savedTripsButton}
-              onClick={() => {
-                document
-                  .getElementById("results")
-                  ?.scrollIntoView({
-                    behavior: "smooth",
-                  });
+      {saveMessage && (
+        <div
+          style={
+            styles.toast
+          }
+        >
+          {saveToastType ===
+          "success" ? (
+            <div
+              style={{
+                ...styles.toastIcon,
+                ...styles.toastSuccessIcon,
               }}
             >
-              Saved Trips ({savedJourneys.length})
-            </button>
-          </div>
-        </header>
+              <CheckIcon />
+            </div>
+          ) : saveToastType ===
+            "removed" ? (
+            <div
+              style={{
+                ...styles.toastIcon,
+                ...styles.toastRemovedIcon,
+              }}
+            >
+              <TrashSmallIcon />
+            </div>
+          ) : (
+            <div
+              style={
+                styles.toastInfoIcon
+              }
+            >
+              i
+            </div>
+          )}
 
-        {/* CONTENT */}
-
-        <div style={styles.content}>
-          {/* ================= SEARCH CARD ================= */}
-
-          <section style={styles.searchCard}>
-            <div style={styles.searchTop}>
-              <div style={styles.searchTitleArea}>
-                <h2 style={styles.searchTitle}>
-                  Find Train Connections
-                </h2>
-
-                <span style={styles.liveBadge}>
-                  Live SBB Timetable
-                </span>
-
-                <p style={styles.searchSubtitle}>
-                  Real-time schedules from
-                  transport.opendata.ch API
-                </p>
-              </div>
-
-              <div style={styles.quickArea}>
-                <span style={styles.quickLabel}>
-                  <SparkleIcon />
-                  Quick:
-                </span>
-
-                <button
-                  type="button"
-                  style={styles.quickButton}
-                  onClick={() =>
-                    handleQuickStation(
-                      "Zürich HB"
-                    )
-                  }
-                >
-                  Zürich HB
-                </button>
-
-                <button
-                  type="button"
-                  style={styles.quickButton}
-                  onClick={() =>
-                    setToStation("Bern")
-                  }
-                >
-                  Bern
-                </button>
-
-                <button
-                  type="button"
-                  style={styles.quickButton}
-                  onClick={() =>
-                    setToStation("Genève")
-                  }
-                >
-                  Genève
-                </button>
-
-                <button
-                  type="button"
-                  style={styles.quickButton}
-                  onClick={() =>
-                    setToStation("Basel SBB")
-                  }
-                >
-                  Basel SBB
-                </button>
-              </div>
+          <div>
+            <div
+              style={
+                styles.toastTitle
+              }
+            >
+              {saveToastType ===
+              "success"
+                ? "Journey Saved"
+                : saveToastType ===
+                  "removed"
+                ? "Journey Removed"
+                : "Information"}
             </div>
 
-            {/* FROM / TO */}
+            <div
+              style={
+                styles.toastText
+              }
+            >
+              {saveMessage}
+            </div>
+          </div>
+        </div>
+      )}
 
-            <div style={styles.formGrid}>
-              {/* FROM */}
+      <div
+        style={
+          styles.content
+        }
+      >
+        {/* =================================================
+            SEARCH CARD
+        ================================================= */}
 
-              <div style={styles.field}>
-                <div style={styles.labelRow}>
-                  <label style={styles.label}>
-                    DEPARTURE STATION
-                  </label>
-                </div>
+        <section
+          style={
+            styles.searchCard
+          }
+        >
+          <div
+            style={
+              styles.searchTop
+            }
+          >
+            <div
+              style={
+                styles.searchTitleArea
+              }
+            >
+              <h2
+                style={
+                  styles.searchTitle
+                }
+              >
+                Find Train Connections
+              </h2>
 
-                <div style={styles.inputWrapper}>
-                  <span style={styles.inputIcon}>
-                    <LocationIcon />
-                  </span>
+              <span
+                style={
+                  styles.liveBadge
+                }
+              >
+                Live SBB Timetable
+              </span>
 
-                  <input
-                    value={fromStation}
-                    onChange={(e) =>
-                      setFromStation(
-                        e.target.value
-                      )
-                    }
-                    style={styles.input}
-                    placeholder="Enter departure station"
-                  />
+              <p
+                style={
+                  styles.searchSubtitle
+                }
+              >
+                Real-time schedules from
+                transport.opendata.ch API
+              </p>
+            </div>
 
-                  {loadingFrom && (
-                    <span
-                      style={{
-                        position: "absolute",
-                        right: "15px",
-                        top: "17px",
-                        fontSize: "13px",
-                        color: "#8ca0ba",
-                      }}
-                    >
-                      Searching...
-                    </span>
-                  )}
-
-                  {fromSuggestions.length > 0 && (
-                    <div
-                      style={
-                        styles.suggestionBox
-                      }
-                    >
-                      {fromSuggestions
-                        .slice(0, 5)
-                        .map(
-                          (
-                            station,
-                            index
-                          ) => (
-                            <div
-                              key={
-                                station.id ||
-                                `${station.name}-${index}`
-                              }
-                              style={
-                                styles.suggestion
-                              }
-                              onClick={() => {
-                                setFromStation(
-                                  station.name
-                                );
-
-                                setFromSuggestions(
-                                  []
-                                );
-                              }}
-                              onMouseEnter={(
-                                e
-                              ) => {
-                                e.currentTarget.style.background =
-                                  "#f8fafc";
-                              }}
-                              onMouseLeave={(
-                                e
-                              ) => {
-                                e.currentTarget.style.background =
-                                  "#ffffff";
-                              }}
-                            >
-                              <LocationIcon />
-
-                              {station.name}
-                            </div>
-                          )
-                        )}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* SWAP */}
+            <div
+              style={
+                styles.quickArea
+              }
+            >
+              <span
+                style={
+                  styles.quickLabel
+                }
+              >
+                <SparkleIcon />
+                Quick:
+              </span>
 
               <button
                 type="button"
-                style={styles.swapButton}
-                onClick={handleSwap}
+                style={
+                  styles.quickButton
+                }
+                onClick={() =>
+                  handleQuickStation(
+                    "Zürich HB"
+                  )
+                }
+              >
+                Zürich HB
+              </button>
+
+              <button
+                type="button"
+                style={
+                  styles.quickButton
+                }
+                onClick={() =>
+                  handleQuickStation(
+                    "Bern"
+                  )
+                }
+              >
+                Bern
+              </button>
+
+              <button
+                type="button"
+                style={
+                  styles.quickButton
+                }
+                onClick={() =>
+                  handleQuickStation(
+                    "Genève"
+                  )
+                }
+              >
+                Genève
+              </button>
+
+              <button
+                type="button"
+                style={
+                  styles.quickButton
+                }
+                onClick={() =>
+                  handleQuickStation(
+                    "Basel SBB"
+                  )
+                }
+              >
+                Basel SBB
+              </button>
+            </div>
+          </div>
+
+          {/* =================================================
+              FROM / SWAP / TO
+          ================================================= */}
+
+          <div
+            style={
+              styles.formGrid
+            }
+          >
+            {/* FROM */}
+
+            <div
+              style={
+                styles.field
+              }
+            >
+              <div
+                style={
+                  styles.labelRow
+                }
+              >
+                <label
+                  style={
+                    styles.label
+                  }
+                >
+                  DEPARTURE STATION
+                </label>
+              </div>
+
+              <div
+                style={
+                  styles.inputWrapper
+                }
+              >
+                <span
+                  style={
+                    styles.inputIcon
+                  }
+                >
+                  <LocationIcon />
+                </span>
+
+                <input
+                  value={
+                    fromStation
+                  }
+                  onChange={(e) => {
+                    setFromStation(
+                      e.target.value
+                    );
+
+                    setFromSelected(
+                      false
+                    );
+
+                    setFromSuggestions(
+                      []
+                    );
+
+                    setError("");
+                  }}
+                  style={
+                    styles.input
+                  }
+                  placeholder="From station (e.g. Zürich HB)"
+                  autoComplete="off"
+                />
+
+                {loadingFrom && (
+                  <span
+                    style={{
+                      position:
+                        "absolute",
+
+                      right:
+                        "14px",
+
+                      top:
+                        "18px",
+
+                      fontSize:
+                        "12px",
+
+                      color:
+                        "#8ca0ba",
+                    }}
+                  >
+                    Searching...
+                  </span>
+                )}
+
+                {fromSuggestions.length >
+                  0 && (
+                  <div
+                    style={
+                      styles.suggestionBox
+                    }
+                  >
+                    {fromSuggestions.map(
+                      (
+                        station,
+                        index
+                      ) => (
+                        <div
+                          key={
+                            station.id ||
+                            `${station.name}-${index}`
+                          }
+                          style={
+                            styles.suggestion
+                          }
+                          onClick={() => {
+                            setFromStation(
+                              station.name
+                            );
+
+                            setFromSelected(
+                              true
+                            );
+
+                            setFromSuggestions(
+                              []
+                            );
+                          }}
+                          onMouseEnter={(
+                            e
+                          ) => {
+                            e.currentTarget.style.background =
+                              "#f8fafc";
+                          }}
+                          onMouseLeave={(
+                            e
+                          ) => {
+                            e.currentTarget.style.background =
+                              "#ffffff";
+                          }}
+                        >
+                          <LocationIcon />
+                          {
+                            station.name
+                          }
+                        </div>
+                      )
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* SWAP */}
+
+            <div
+              style={
+                styles.swapArea
+              }
+            >
+              <button
+                type="button"
+                style={
+                  styles.swapButton
+                }
+                onClick={
+                  handleSwap
+                }
                 title="Swap stations"
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background =
-                    "#fff0f3";
-
-                  e.currentTarget.style.color =
-                    "#a52e49";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background =
-                    "#ffffff";
-
-                  e.currentTarget.style.color =
-                    "#6f829d";
-                }}
               >
                 <SwapIcon />
               </button>
-
-              {/* TO */}
-
-              <div style={styles.field}>
-                <div style={styles.labelRow}>
-                  <label style={styles.label}>
-                    ARRIVAL STATION
-                  </label>
-
-                  <span
-                    style={styles.via}
-                    onClick={() =>
-                      alert(
-                        "Via station option can be connected later."
-                      )
-                    }
-                  >
-                    + Via
-                  </span>
-                </div>
-
-                <div style={styles.inputWrapper}>
-                  <span style={styles.inputIcon}>
-                    <LocationIcon />
-                  </span>
-
-                  <input
-                    value={toStation}
-                    onChange={(e) =>
-                      setToStation(
-                        e.target.value
-                      )
-                    }
-                    style={styles.input}
-                    placeholder="Enter arrival station"
-                  />
-
-                  {loadingTo && (
-                    <span
-                      style={{
-                        position: "absolute",
-                        right: "15px",
-                        top: "17px",
-                        fontSize: "13px",
-                        color: "#8ca0ba",
-                      }}
-                    >
-                      Searching...
-                    </span>
-                  )}
-
-                  {toSuggestions.length > 0 && (
-                    <div
-                      style={
-                        styles.suggestionBox
-                      }
-                    >
-                      {toSuggestions
-                        .slice(0, 5)
-                        .map(
-                          (
-                            station,
-                            index
-                          ) => (
-                            <div
-                              key={
-                                station.id ||
-                                `${station.name}-${index}`
-                              }
-                              style={
-                                styles.suggestion
-                              }
-                              onClick={() => {
-                                setToStation(
-                                  station.name
-                                );
-
-                                setToSuggestions(
-                                  []
-                                );
-                              }}
-                              onMouseEnter={(
-                                e
-                              ) => {
-                                e.currentTarget.style.background =
-                                  "#f8fafc";
-                              }}
-                              onMouseLeave={(
-                                e
-                              ) => {
-                                e.currentTarget.style.background =
-                                  "#ffffff";
-                              }}
-                            >
-                              <LocationIcon />
-
-                              {station.name}
-                            </div>
-                          )
-                        )}
-                    </div>
-                  )}
-                </div>
-              </div>
             </div>
 
-            {/* DATE / TIME / SEARCH */}
+            {/* TO */}
 
-            <div style={styles.bottomGrid}>
-              <div style={styles.field}>
-                <div style={styles.labelRow}>
-                  <label style={styles.label}>
-                    DEPARTURE DATE & TIME
-                  </label>
-                </div>
-
-                <div
+            <div
+              style={
+                styles.field
+              }
+            >
+              <div
+                style={
+                  styles.labelRow
+                }
+              >
+                <label
                   style={
-                    styles.dateTimeGroup
+                    styles.label
                   }
                 >
-                  <input
-                    type="date"
-                    value={departureDate}
-                    onChange={(e) =>
-                      setDepartureDate(
-                        e.target.value
-                      )
-                    }
-                    style={styles.dateInput}
-                  />
+                  ARRIVAL STATION
+                </label>
 
-                  <input
-                    type="time"
-                    value={departureTime}
-                    onChange={(e) =>
-                      setDepartureTime(
-                        e.target.value
-                      )
-                    }
-                    style={styles.timeInput}
-                  />
-                </div>
+                <span
+                  style={
+                    styles.via
+                  }
+                  onClick={() =>
+                    alert(
+                      "Via station option can be connected later."
+                    )
+                  }
+                >
+                  + Via
+                </span>
               </div>
 
-              <div style={styles.depBadge}>
-                Dep
-              </div>
-
-              <button
-                type="button"
-                style={{
-                  ...styles.searchButton,
-                  opacity:
-                    loading ||
-                    !fromStation ||
-                    !toStation
-                      ? 0.65
-                      : 1,
-                }}
-                disabled={
-                  loading ||
-                  !fromStation ||
-                  !toStation
+              <div
+                style={
+                  styles.inputWrapper
                 }
-                onClick={handleSearch}
               >
-                <SearchIcon />
+                <span
+                  style={
+                    styles.inputIcon
+                  }
+                >
+                  <LocationIcon />
+                </span>
 
-                {loading
-                  ? "Finding..."
-                  : "Find Journey"}
-              </button>
-            </div>
-          </section>
+                <input
+                  value={
+                    toStation
+                  }
+                  onChange={(e) => {
+                    setToStation(
+                      e.target.value
+                    );
 
-          {/* ERROR */}
+                    setToSelected(
+                      false
+                    );
 
-          {error && (
-            <div style={styles.message}>
-              {error}
-            </div>
-          )}
+                    setToSuggestions(
+                      []
+                    );
 
-          {/* LOADING */}
+                    setError("");
+                  }}
+                  style={
+                    styles.input
+                  }
+                  placeholder="To station (e.g. Bern)"
+                  autoComplete="off"
+                />
 
-          {loading && (
-            <div style={styles.loading}>
-              Searching live train connections...
-            </div>
-          )}
+                {loadingTo && (
+                  <span
+                    style={{
+                      position:
+                        "absolute",
 
-          {/* ================= RESULTS ================= */}
+                      right:
+                        "14px",
 
-          {connections.length > 0 && (
-            <section
-              id="results"
-              style={styles.resultCard}
-            >
-              <div style={styles.resultHeader}>
-                <div>
-                  <h2 style={styles.resultTitle}>
-                    Available Train Connections
-                  </h2>
+                      top:
+                        "18px",
 
-                  <p
+                      fontSize:
+                        "12px",
+
+                      color:
+                        "#8ca0ba",
+                    }}
+                  >
+                    Searching...
+                  </span>
+                )}
+
+                {toSuggestions.length >
+                  0 && (
+                  <div
                     style={
-                      styles.resultSubtitle
+                      styles.suggestionBox
                     }
                   >
-                    Found connections from{" "}
-                    {fromStation} to{" "}
-                    {toStation}
-                  </p>
-                </div>
+                    {toSuggestions.map(
+                      (
+                        station,
+                        index
+                      ) => (
+                        <div
+                          key={
+                            station.id ||
+                            `${station.name}-${index}`
+                          }
+                          style={
+                            styles.suggestion
+                          }
+                          onClick={() => {
+                            setToStation(
+                              station.name
+                            );
 
-                <div style={styles.routeCount}>
-                  {connections.length} Routes Found
-                </div>
+                            setToSelected(
+                              true
+                            );
+
+                            setToSuggestions(
+                              []
+                            );
+                          }}
+                          onMouseEnter={(
+                            e
+                          ) => {
+                            e.currentTarget.style.background =
+                              "#f8fafc";
+                          }}
+                          onMouseLeave={(
+                            e
+                          ) => {
+                            e.currentTarget.style.background =
+                              "#ffffff";
+                          }}
+                        >
+                          <LocationIcon />
+                          {
+                            station.name
+                          }
+                        </div>
+                      )
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* =================================================
+              DATE / DEP-ARR / FIND JOURNEY
+          ================================================= */}
+
+          <div
+            style={
+              styles.bottomRow
+            }
+          >
+            {/* DATE / TIME */}
+
+            <div
+              style={
+                styles.dateField
+              }
+            >
+              <div
+                style={
+                  styles.labelRow
+                }
+              >
+                <label
+                  style={
+                    styles.label
+                  }
+                >
+                  {isArrivalTime
+                    ? "ARRIVAL DATE & TIME"
+                    : "DEPARTURE DATE & TIME"}
+                </label>
               </div>
 
-              {connections
-                .slice(0, 5)
-                .map(
-                  (
-                    connection,
-                    index
-                  ) => {
-                    const fromTime =
-                      formatTime(
-                        connection.from
-                          ?.departure
-                      );
+              <div
+                style={
+                  styles.dateTimeRow
+                }
+              >
+                <input
+                  type="date"
+                  value={
+                    departureDate
+                  }
+                  onChange={(e) =>
+                    setDepartureDate(
+                      e.target.value
+                    )
+                  }
+                  style={
+                    styles.dateInput
+                  }
+                />
 
-                    const toTime =
-                      formatTime(
-                        connection.to
-                          ?.arrival
-                      );
+                <input
+                  type="time"
+                  value={
+                    departureTime
+                  }
+                  onChange={(e) =>
+                    setDepartureTime(
+                      e.target.value
+                    )
+                  }
+                  style={
+                    styles.timeInput
+                  }
+                />
+              </div>
+            </div>
 
-                    const duration =
-                      formatDuration(
-                        connection.duration
-                      );
+            {/* CENTER DEP / ARR */}
 
-                    const transfers =
-                      connection.transfers ||
-                      0;
+            <div
+              style={
+                styles.timeModeArea
+              }
+            >
+              <div
+                style={
+                  styles.depArrGroup
+                }
+              >
+                <span
+                  style={{
+                    ...styles.modeText,
 
-                    const saved =
-                      isSaved(connection);
+                    ...(!isArrivalTime
+                      ? styles.modeTextActive
+                      : {}),
+                  }}
+                >
+                  Dep
+                </span>
 
-                    return (
+                <button
+                  type="button"
+                  style={
+                    styles.modeSwitch
+                  }
+                  onClick={
+                    handleTimeModeChange
+                  }
+                  title="Switch between Departure and Arrival"
+                  aria-label="Switch between Departure and Arrival"
+                >
+                  <span
+                    style={{
+                      ...styles.modeKnob,
+
+                      left:
+                        isArrivalTime
+                          ? "32px"
+                          : "4px",
+                    }}
+                  />
+                </button>
+
+                <span
+                  style={{
+                    ...styles.modeText,
+
+                    ...(isArrivalTime
+                      ? styles.modeTextActive
+                      : {}),
+                  }}
+                >
+                  Arr
+                </span>
+              </div>
+            </div>
+
+            {/* FIND JOURNEY */}
+
+            <button
+              type="button"
+              style={{
+                ...styles.searchButton,
+
+                opacity:
+                  loading ||
+                  !fromStation.trim() ||
+                  !toStation.trim()
+                    ? 0.65
+                    : 1,
+              }}
+              disabled={
+                loading ||
+                !fromStation.trim() ||
+                !toStation.trim()
+              }
+              onClick={
+                handleSearch
+              }
+            >
+              <SearchIcon />
+
+              {loading
+                ? "Finding..."
+                : "Find Journey"}
+            </button>
+          </div>
+        </section>
+
+        {/* ERROR */}
+
+        {error && (
+          <div
+            style={
+              styles.message
+            }
+          >
+            {error}
+          </div>
+        )}
+
+        {/* LOADING */}
+
+        {loading && (
+          <div
+            style={
+              styles.loading
+            }
+          >
+            Searching live train
+            connections...
+          </div>
+        )}
+
+        {/* =================================================
+            RESULTS
+        ================================================= */}
+
+        {connections.length >
+          0 && (
+          <section
+            id="results"
+            style={
+              styles.resultsWrapper
+            }
+          >
+            {/* RESULTS HEADER */}
+
+            <div
+              style={
+                styles.resultHeader
+              }
+            >
+              <div>
+                <h2
+                  style={
+                    styles.resultTitle
+                  }
+                >
+                  Available Train
+                  Connections
+                </h2>
+
+                <p
+                  style={
+                    styles.resultSubtitle
+                  }
+                >
+                  Found connections from{" "}
+                  {fromStation} to{" "}
+                  {toStation}
+                </p>
+              </div>
+
+              <div
+                style={
+                  styles.routeCount
+                }
+              >
+                {Math.min(
+                  connections.length,
+                  5
+                )}{" "}
+                Routes Found
+              </div>
+            </div>
+
+            {/* ROUTES */}
+
+            {connections
+              .slice(
+                0,
+                5
+              )
+              .map(
+                (
+                  connection,
+                  index
+                ) => {
+                  const fromTime =
+                    formatTime(
+                      connection
+                        .from
+                        ?.departure
+                    );
+
+                  const toTime =
+                    formatTime(
+                      connection
+                        .to
+                        ?.arrival
+                    );
+
+                  const duration =
+                    formatDuration(
+                      connection
+                        .duration
+                    );
+
+                  const transfers =
+                    connection
+                      .transfers ||
+                    0;
+
+                  const saved =
+                    Boolean(
+                      findSavedJourney(
+                        connection
+                      )
+                    );
+
+                  const stops =
+                    getJourneyStops(
+                      connection
+                    );
+
+                  const routeExpanded =
+                    Boolean(
+                      expandedRoutes[
+                        index
+                      ]
+                    );
+
+                  const stopsVisible =
+                    Boolean(
+                      showStops[
+                        index
+                      ]
+                    );
+
+                  const lastRoute =
+                    index ===
+                    Math.min(
+                      connections.length,
+                      5
+                    ) - 1;
+
+                  return (
+                    <div
+                      key={`${connection.from?.departure || "route"}-${connection.to?.arrival || "arrival"}-${index}`}
+                      style={{
+                        ...styles.routeCard,
+
+                        borderTop:
+                          index ===
+                          0
+                            ? "none"
+                            : "1px solid #e1e7ef",
+
+                        borderRadius:
+                          lastRoute
+                            ? "0 0 16px 16px"
+                            : "0",
+                      }}
+                    >
+                      {/* ROUTE TOP */}
+
                       <div
-                        key={`${connection.from?.departure}-${index}`}
-                        style={{
-                          ...styles.route,
-                          borderBottom:
-                            index ===
-                            Math.min(
-                              connections.length,
-                              5
-                            ) -
-                              1
-                              ? "none"
-                              : "1px solid #e7ebf0",
-                        }}
+                        style={
+                          styles.routeTop
+                        }
                       >
                         {/* DEPARTURE */}
 
                         <div>
                           <div
                             style={
-                              styles.time
+                              styles.resultTime
                             }
                           >
-                            {fromTime}
+                            {
+                              fromTime
+                            }
                           </div>
 
                           <div
@@ -1913,7 +4151,8 @@ function PlanJourney() {
                               styles.stationName
                             }
                           >
-                            {connection.from
+                            {connection
+                              .from
                               ?.station
                               ?.name ||
                               fromStation}
@@ -1925,7 +4164,8 @@ function PlanJourney() {
                             }
                           >
                             Pl.{" "}
-                            {connection.from
+                            {connection
+                              .from
                               ?.platform ||
                               "-"}
                           </span>
@@ -1935,26 +4175,26 @@ function PlanJourney() {
 
                         <div
                           style={
-                            styles.timeline
+                            styles.horizontalTimeline
                           }
                         >
                           <span
                             style={
-                              styles.line
+                              styles.horizontalLine
                             }
-                          ></span>
+                          />
 
                           <span
                             style={
                               styles.leftDot
                             }
-                          ></span>
+                          />
 
                           <span
                             style={
                               styles.rightDot
                             }
-                          ></span>
+                          />
 
                           <span
                             style={
@@ -1962,7 +4202,10 @@ function PlanJourney() {
                             }
                           >
                             <ClockIcon />
-                            {duration}
+
+                            {
+                              duration
+                            }
                           </span>
 
                           {transfers ===
@@ -1980,7 +4223,9 @@ function PlanJourney() {
                                 styles.transfer
                               }
                             >
-                              {transfers}{" "}
+                              {
+                                transfers
+                              }{" "}
                               transfer
                               {transfers >
                               1
@@ -1995,10 +4240,12 @@ function PlanJourney() {
                         <div>
                           <div
                             style={
-                              styles.time
+                              styles.resultTime
                             }
                           >
-                            {toTime}
+                            {
+                              toTime
+                            }
                           </div>
 
                           <div
@@ -2006,7 +4253,8 @@ function PlanJourney() {
                               styles.stationName
                             }
                           >
-                            {connection.to
+                            {connection
+                              .to
                               ?.station
                               ?.name ||
                               toStation}
@@ -2018,7 +4266,8 @@ function PlanJourney() {
                             }
                           >
                             Pl.{" "}
-                            {connection.to
+                            {connection
+                              .to
                               ?.platform ||
                               "-"}
                           </span>
@@ -2036,16 +4285,25 @@ function PlanJourney() {
                           )}
                         </div>
 
-                        {/* SAVE */}
+                        {/* SAVE + ARROW */}
 
-                        <div>
+                        <div
+                          style={
+                            styles.routeActions
+                          }
+                        >
                           {saved ? (
                             <button
                               type="button"
                               style={
-                                styles.savedButton
+                                styles.savedSmallButton
                               }
-                              disabled
+                              onClick={() =>
+                                saveJourney(
+                                  connection
+                                )
+                              }
+                              title="Click to unsave"
                             >
                               ✓ Saved
                             </button>
@@ -2053,7 +4311,7 @@ function PlanJourney() {
                             <button
                               type="button"
                               style={
-                                styles.saveButton
+                                styles.saveSmallButton
                               }
                               onClick={() =>
                                 saveJourney(
@@ -2061,94 +4319,117 @@ function PlanJourney() {
                                 )
                               }
                             >
-                              Save Journey
+                              Save
                             </button>
                           )}
+
+                          <button
+                            type="button"
+                            style={
+                              styles.arrowButton
+                            }
+                            onClick={() =>
+                              toggleRoute(
+                                index
+                              )
+                            }
+                            title={
+                              routeExpanded
+                                ? "Collapse journey"
+                                : "Expand journey"
+                            }
+                          >
+                            {routeExpanded ? (
+                              <ChevronUpIcon />
+                            ) : (
+                              <ChevronDownIcon />
+                            )}
+                          </button>
                         </div>
                       </div>
-                    );
-                  }
-                )}
-            </section>
-          )}
-        </div>
 
-        {/* ================= FOOTER ================= */}
+                      {/* JOURNEY DETAILS */}
 
-        <footer style={styles.footer}>
-          <div style={styles.footerLeft}>
-            <TrainLogoIcon />
+                      {routeExpanded && (
+                        <div
+                          style={
+                            styles.detailSection
+                          }
+                        >
+                          {stopsVisible ? (
+                            <ExpandedTimeline
+                              connection={
+                                connection
+                              }
+                              index={
+                                index
+                              }
+                              stops={
+                                stops
+                              }
+                            />
+                          ) : (
+                            <CompactTimeline
+                              connection={
+                                connection
+                              }
+                              index={
+                                index
+                              }
+                              stops={
+                                stops
+                              }
+                            />
+                          )}
 
-            <strong>Railtrack</strong>
+                          {/* BOTTOM SAVE */}
 
-            <span>•</span>
-
-            <span>
-              © 2026 Train Journey Planner
-            </span>
-          </div>
-
-          <div style={styles.footerRight}>
-            <button
-              type="button"
-              style={{
-                ...styles.footerButton,
-                ...styles.footerActive,
-              }}
-              onClick={() =>
-                handleNavigation(
-                  "Plan Journey"
-                )
-              }
-            >
-              Plan Journey
-            </button>
-
-            <span>•</span>
-
-            <button
-              type="button"
-              style={styles.footerButton}
-              onClick={() =>
-                handleNavigation(
-                  "My Journeys"
-                )
-              }
-            >
-              My Journeys
-            </button>
-
-            <span>•</span>
-
-            <button
-              type="button"
-              style={styles.footerButton}
-              onClick={() =>
-                handleNavigation(
-                  "Travel Stats"
-                )
-              }
-            >
-              Travel Stats
-            </button>
-
-            <span>•</span>
-
-            <button
-              type="button"
-              style={styles.footerButton}
-              onClick={() =>
-                window.open(
-                  "https://transport.opendata.ch/",
-                  "_blank"
-                )
-              }
-            >
-              Swiss Open Data ↗
-            </button>
-          </div>
-        </footer>
-      </main>
+                          <div
+                            style={
+                              styles.saveArea
+                            }
+                          >
+                            {saved ? (
+                              <button
+                                type="button"
+                                style={
+                                  styles.savedFullButton
+                                }
+                                onClick={() =>
+                                  saveJourney(
+                                    connection
+                                  )
+                                }
+                                title="Click to unsave"
+                              >
+                                <CheckIcon />
+                                Journey Saved
+                              </button>
+                            ) : (
+                              <button
+                                type="button"
+                                style={
+                                  styles.saveFullButton
+                                }
+                                onClick={() =>
+                                  saveJourney(
+                                    connection
+                                  )
+                                }
+                              >
+                                Save Journey
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+              )}
+          </section>
+        )}
+      </div>
     </div>
   );
 }
