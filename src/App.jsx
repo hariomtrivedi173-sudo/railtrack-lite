@@ -1,5 +1,13 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import Footer from "./components/Footer";
+
+import PlanJourney from "./pages/PlanJourney";
 import TravelStatus from "./pages/TravelStatus";
+
+import "./App.css";
 
 const STORAGE_KEY = "railtrack_saved_journeys";
 
@@ -14,31 +22,127 @@ function loadJourneys() {
   }
 }
 
-export default function App() {
+function App() {
   const [savedJourneys, setSavedJourneys] = useState(loadJourneys);
+  const [currentPage, setCurrentPage] = useState("Plan Journey");
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(savedJourneys));
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(savedJourneys)
+    );
   }, [savedJourneys]);
 
-  return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
-      <header className="flex items-center justify-between border-b border-slate-200 bg-white px-6 py-4">
-        <div>
-          <p className="text-sm text-slate-500">
-            JourneyHub / <span className="font-semibold text-slate-800">Travel Stats</span>
-          </p>
-          <h2 className="text-xl font-bold">Travel Stats</h2>
-        </div>
-        <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-700">
-          LocalStorage {savedJourneys.length}
-        </span>
-      </header>
+  const handleNavigation = (page) => {
+    setCurrentPage(page);
+  };
 
-      <TravelStatus
+  const handleReset = () => {
+    localStorage.removeItem(STORAGE_KEY);
+    setSavedJourneys([]);
+  };
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case "Plan Journey":
+        return (
+          <PlanJourney
+            savedJourneys={savedJourneys}
+            setSavedJourneys={setSavedJourneys}
+          />
+        );
+
+      case "Travel Stats":
+        return (
+          <TravelStatus
+            savedJourneys={savedJourneys}
+            onPlanJourney={() =>
+              setCurrentPage("Plan Journey")
+            }
+          />
+        );
+
+      case "My Journeys":
+        return (
+          <div
+            style={{
+              padding: "40px",
+              fontSize: "20px",
+            }}
+          >
+            <h2>My Journeys</h2>
+
+            {savedJourneys.length === 0 ? (
+              <p>No saved journeys yet.</p>
+            ) : (
+              <ul>
+                {savedJourneys.map((journey, index) => (
+                  <li key={index}>
+                    Journey {index + 1}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        );
+
+      case "Dashboard":
+        return (
+          <div
+            style={{
+              padding: "40px",
+              fontSize: "20px",
+            }}
+          >
+            <h2>Dashboard</h2>
+            <p>Dashboard page.</p>
+          </div>
+        );
+
+      default:
+        return <PlanJourney />;
+    }
+  };
+
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#f8fafc",
+        color: "#111827",
+      }}
+    >
+      <Sidebar
+        currentPage={currentPage}
         savedJourneys={savedJourneys}
-        onPlanJourney={() => alert("Go to Plan Journey")}
+        onNavigation={handleNavigation}
+        onReset={handleReset}
       />
+
+      <div
+        style={{
+          marginLeft: "315px",
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Header
+          currentPage={currentPage}
+          savedJourneys={savedJourneys}
+        />
+
+        <main style={{ flex: 1 }}>
+          {renderPage()}
+        </main>
+
+        <Footer
+          currentPage={currentPage}
+          onNavigation={handleNavigation}
+        />
+      </div>
     </div>
   );
 }
+
+export default App;
