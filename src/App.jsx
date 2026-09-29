@@ -1,122 +1,135 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+import Dashboard from "./components/dashboard/Dashboard";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import PlanJourney from "./pages/PlanJourney";
 
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+const STORAGE_KEY = "railtrack_saved_journeys";
 
-      <div className="ticks"></div>
+function getSavedJourneys() {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+    if (!stored) {
+      return [];
+    }
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+    const parsed = JSON.parse(stored);
+
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (error) {
+    console.error("Unable to read saved journeys:", error);
+    return [];
+  }
 }
 
-export default App
+function App() {
+  const [currentPage, setCurrentPage] = useState("Dashboard");
+
+  const [savedJourneys, setSavedJourneys] = useState(() =>
+    getSavedJourneys()
+  );
+
+  const handleNavigation = (page) => {
+    setSavedJourneys(getSavedJourneys());
+    setCurrentPage(page);
+  };
+
+  const handleReset = () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to remove all saved journeys?"
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    localStorage.removeItem(STORAGE_KEY);
+    setSavedJourneys([]);
+  };
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case "Plan Journey":
+        return (
+          <PlanJourney
+            savedJourneys={savedJourneys}
+            setSavedJourneys={setSavedJourneys}
+          />
+        );
+
+      case "My Journeys":
+        return (
+          <div className="p-8">
+            <h2 className="text-2xl font-bold text-slate-900">
+              My Journeys
+            </h2>
+
+            <p className="mt-2 text-slate-500">
+              My Journeys page will appear here after Khushi's work is merged.
+            </p>
+          </div>
+        );
+
+      case "Travel Stats":
+        return (
+          <div className="p-8">
+            <h2 className="text-2xl font-bold text-slate-900">
+              Travel Stats
+            </h2>
+
+            <p className="mt-2 text-slate-500">
+              Travel Stats page will appear here after Divya's work is merged.
+            </p>
+          </div>
+        );
+
+      case "Dashboard":
+      default:
+        return (
+          <Dashboard
+            onPlanJourney={() =>
+              handleNavigation("Plan Journey")
+            }
+            onMyJourneys={() =>
+              handleNavigation("My Journeys")
+            }
+          />
+        );
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50">
+      <Sidebar
+        currentPage={currentPage}
+        savedJourneys={savedJourneys}
+        onNavigation={handleNavigation}
+        onReset={handleReset}
+      />
+
+      <div
+        className="flex min-h-screen flex-col"
+        style={{ marginLeft: "315px" }}
+      >
+        <Header
+          currentPage={currentPage}
+          savedJourneys={savedJourneys}
+        />
+
+        <main className="flex-1">
+          {renderPage()}
+        </main>
+
+        <Footer
+          currentPage={currentPage}
+          onNavigation={handleNavigation}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default App;
