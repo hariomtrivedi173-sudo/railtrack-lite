@@ -16,7 +16,7 @@ function durationToMinutes(durationStr) {
   return (parseInt(dayPart, 10) || 0) * 1440 + h * 60 + m;
 }
 
-// 171 -> "2h 51m"
+// 105 -> "1h 45m"
 function formatMinutes(totalMinutes) {
   const mins = Math.max(0, Math.round(totalMinutes || 0));
   const h = Math.floor(mins / 60);
@@ -25,7 +25,6 @@ function formatMinutes(totalMinutes) {
   return m > 0 ? `${h}h ${m}m` : `${h}h`;
 }
 
-// Fallback: read directly from localStorage if App doesn't pass the data
 function loadFromStorage() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -37,16 +36,24 @@ function loadFromStorage() {
   }
 }
 
-// Most frequent value of a key, using .reduce()
-function getTopItem(journeys, key) {
+// Read a station name from several possible data shapes
+function getStationName(j, side) {
+  if (side === "from") {
+    return j.fromStation ?? j.from?.station?.name ?? (typeof j.from === "string" ? j.from : null);
+  }
+  return j.toStation ?? j.to?.station?.name ?? (typeof j.to === "string" ? j.to : null);
+}
+
+// Most frequent station, using .reduce() -> { name, n } or null
+function getTopStation(journeys, side) {
   const counts = journeys.reduce((acc, j) => {
-    const name = j[key];
+    const name = getStationName(j, side);
     if (name) acc[name] = (acc[name] || 0) + 1;
     return acc;
   }, {});
 
   const top = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
-  return top ? { name: top[0], count: top[1] } : null;
+  return top ? { name: top[0], n: top[1] } : null;
 }
 
 const CARD_STYLES = {
@@ -64,23 +71,33 @@ function StatCard({ label, value, tag, icon, color }) {
         <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">{label}</p>
         <span className={`flex h-9 w-9 items-center justify-center rounded-lg ${s.badge}`}>{icon}</span>
       </div>
-      <div className="mt-4 flex items-end justify-between">
+      <div className="mt-4 flex items-end justify-between gap-2">
         <p className={`text-4xl font-extrabold ${s.value}`}>{value}</p>
-        <span className={`rounded-md px-2 py-0.5 text-xs font-semibold ${s.badge}`}>{tag}</span>
+        <span className={`whitespace-nowrap rounded-md px-2 py-0.5 text-xs font-semibold ${s.badge}`}>{tag}</span>
       </div>
     </div>
   );
 }
 
-function HubCard({ icon, iconBg, label, name, count, unit }) {
+// Same structure as your snippet: icon | label + name | count pill
+function Hub({ icon, iconBg, label, station, unit }) {
   return (
-    <div className="flex flex-col items-center rounded-xl border border-slate-200 bg-slate-50 px-4 py-6 text-center">
-      <span className={`flex h-11 w-11 items-center justify-center rounded-xl text-lg ${iconBg}`}>{icon}</span>
-      <p className="mt-3 text-xs font-medium uppercase tracking-wider text-slate-500">{label}</p>
-      <p className="text-xl font-bold text-slate-900">{name}</p>
-      <span className="mt-3 rounded-md border border-slate-200 bg-white px-3 py-1 text-sm font-medium text-slate-700">
-        {count} {count === 1 ? unit : `${unit}s`}
+    <div className="flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 px-5 py-4">
+      <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-xl ${iconBg}`}>
+        {icon}
       </span>
+      <div className="min-w-0 flex-1">
+        <small className="block text-xs font-semibold uppercase tracking-wider text-slate-500">{label}</small>
+        <strong className="block truncate text-xl font-bold text-slate-900">
+          {station ? station.name : "—"}
+        </strong>
+      </div>
+      {station && (
+        <span className="whitespace-nowrap rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700">
+          {station.n} {unit}
+          {station.n > 1 ? "s" : ""}
+        </span>
+      )}
     </div>
   );
 }
@@ -90,12 +107,12 @@ function ProgressRow({ label, count, percent, dotColor, barColor }) {
     <div className="mt-4">
       <div className="flex items-center justify-between text-sm font-semibold text-slate-900">
         <span className="flex items-center gap-2">
-          <span className={`h-2 w-2 rounded-full ${dotColor}`} />
+          <span className={`h-2.5 w-2.5 rounded-full ${dotColor}`} />
           {label} ({count})
         </span>
         <span>{percent}%</span>
       </div>
-      <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-200">
+      <div className="mt-2 h-2.5 w-full overflow-hidden rounded-full bg-slate-200">
         <div
           className={`h-full rounded-full transition-all duration-500 ${barColor}`}
           style={{ width: `${percent}%` }}
@@ -106,14 +123,13 @@ function ProgressRow({ label, count, percent, dotColor, barColor }) {
 }
 
 export default function TravelStatus({ savedJourneys, onPlanJourney }) {
-  // Use props from App if given, otherwise read localStorage
   const journeys = useMemo(
     () => (Array.isArray(savedJourneys) ? savedJourneys : loadFromStorage()),
     [savedJourneys]
   );
 
-  // All values below are derived: no extra state or storage
-  const stats = useMemo(() => {
+  // Everything below is derived: no extra state or storage
+  const s = useMemo(() => {
     const total = journeys.length;
     const completed = journeys.filter((j) => j.status === "completed").length;
     const planned = journeys.filter((j) => j.status === "planned").length;
@@ -125,9 +141,7 @@ export default function TravelStatus({ savedJourneys, onPlanJourney }) {
 
     const direct = journeys.filter((j) => (j.transfers ?? 0) === 0).length;
     const withTransfers = total - direct;
-
     const pct = (n) => (total === 0 ? 0 : Math.round((n / total) * 100));
-
     const co2Kg = Math.round((totalMinutes / 60) * AVG_TRAIN_SPEED_KMH * CO2_SAVED_KG_PER_KM);
 
     return {
@@ -141,8 +155,8 @@ export default function TravelStatus({ savedJourneys, onPlanJourney }) {
       directPct: pct(direct),
       transferPct: pct(withTransfers),
       co2Kg,
-      topDeparture: getTopItem(journeys, "fromStation"),
-      topDestination: getTopItem(journeys, "toStation"),
+      dep: getTopStation(journeys, "from"),
+      arr: getTopStation(journeys, "to"),
     };
   }, [journeys]);
 
@@ -173,65 +187,47 @@ export default function TravelStatus({ savedJourneys, onPlanJourney }) {
 
       {/* KPI cards */}
       <section className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Total Journeys" value={stats.total} tag="Logged Trips" icon="◎" color="maroon" />
+        <StatCard label="Total Journeys" value={s.total} tag="Logged Trips" icon="◎" color="maroon" />
         <StatCard
           label="Time on Rails"
-          value={formatMinutes(stats.totalMinutes)}
-          tag={`${stats.totalMinutes} mins`}
+          value={formatMinutes(s.totalMinutes)}
+          tag={`${s.totalMinutes} mins`}
           icon="◔"
           color="amber"
         />
-        <StatCard label="Completed" value={stats.completed} tag={`${stats.completedPct}%`} icon="✓" color="green" />
-        <StatCard label="Planned Ahead" value={stats.planned} tag="Upcoming" icon="▤" color="blue" />
+        <StatCard label="Completed" value={s.completed} tag={`${s.completedPct}%`} icon="✓" color="green" />
+        <StatCard label="Planned Ahead" value={s.planned} tag="Upcoming" icon="▤" color="blue" />
       </section>
 
       {/* Hubs + Connection types */}
       <section className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+        {/* Favorite Station Hubs */}
         <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <h3 className="text-xl font-bold text-slate-900">Favorite Station Hubs ✨</h3>
           <p className="mt-1 text-sm text-slate-500">Your most frequently visited railway stations</p>
 
-          {stats.topDeparture ? (
-            <div className="mt-5 space-y-4">
-              <HubCard
-                icon="🚉"
-                iconBg="bg-rose-100"
-                label="Top Departure Hub"
-                name={stats.topDeparture.name}
-                count={stats.topDeparture.count}
-                unit="departure"
-              />
-              <HubCard
-                icon="🎯"
-                iconBg="bg-emerald-100"
-                label="Top Destination"
-                name={stats.topDestination.name}
-                count={stats.topDestination.count}
-                unit="arrival"
-              />
-            </div>
-          ) : (
-            <p className="mt-6 rounded-xl bg-slate-50 p-6 text-center text-slate-500">
-              Save a journey to see your favorite stations here.
-            </p>
-          )}
+          <div className="mt-5 space-y-4">
+            <Hub icon="🚉" iconBg="bg-[#fde8ec]" label="Top departure hub" station={s.dep} unit="departure" />
+            <Hub icon="🎯" iconBg="bg-[#d1fae5]" label="Top destination" station={s.arr} unit="arrival" />
+          </div>
         </div>
 
+        {/* Connection Types & Eco Impact */}
         <div className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <h3 className="text-xl font-bold text-slate-900">Connection Types &amp; Eco Impact</h3>
           <p className="mt-1 text-sm text-slate-500">Train transfer efficiency &amp; estimated environmental benefit</p>
 
           <ProgressRow
             label="Direct Trains"
-            count={stats.direct}
-            percent={stats.directPct}
+            count={s.direct}
+            percent={s.directPct}
             dotColor="bg-emerald-500"
             barColor="bg-emerald-500"
           />
           <ProgressRow
             label="Transfers Required"
-            count={stats.withTransfers}
-            percent={stats.transferPct}
+            count={s.withTransfers}
+            percent={s.transferPct}
             dotColor="bg-amber-500"
             barColor="bg-amber-500"
           />
@@ -239,9 +235,9 @@ export default function TravelStatus({ savedJourneys, onPlanJourney }) {
           <div className="mt-6 flex items-center justify-between rounded-xl border border-emerald-200 bg-emerald-50 p-5">
             <div>
               <p className="text-lg font-bold text-slate-900">🌱 Estimated CO2 Avoided</p>
-              <p className="text-sm text-slate-500">Compared to highway automobile travel</p>
+              <p className="text-sm text-emerald-700">Compared to highway automobile travel</p>
             </div>
-            <p className="text-2xl font-extrabold text-slate-900">~{stats.co2Kg} kg</p>
+            <p className="text-2xl font-extrabold text-slate-900">~{s.co2Kg} kg</p>
           </div>
 
           <div className="mt-auto border-t border-slate-200 pt-5 text-right">
