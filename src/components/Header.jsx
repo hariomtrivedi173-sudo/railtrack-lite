@@ -19,85 +19,85 @@ function Header({
       backdropFilter: "blur(10px)",
     },
 
-breadcrumb: {
-  color: "#94a3b8",
-  fontSize: "12px",
-  fontWeight: 600,
-  marginBottom: "2px",
-},
+    breadcrumb: {
+      color: "#94a3b8",
+      fontSize: "12px",
+      fontWeight: 600,
+      marginBottom: "2px",
+    },
 
-breadcrumbActive: {
-  color: "#475569",
-  fontWeight: 700,
-},
+    breadcrumbActive: {
+      color: "#475569",
+      fontWeight: 700,
+    },
 
-pageTitle: {
-  margin: 0,
-  fontSize: "18px",
-  fontWeight: 800,
-  color: "#0f172a",
-},
+    pageTitle: {
+      margin: 0,
+      fontSize: "18px",
+      fontWeight: 800,
+      color: "#0f172a",
+    },
 
-headerActions: {
-  display: "flex",
-  alignItems: "center",
-  gap: "12px",
-},
+    headerActions: {
+      display: "flex",
+      alignItems: "center",
+      gap: "12px",
+    },
 
-storageBadge: {
-  display: "flex",
-  alignItems: "center",
-  gap: "8px",
-  border: "1px solid #a7f3d0",
-  background: "#ecfdf5",
-  color: "#065f46",
-  padding: "6px 12px",
-  borderRadius: "999px",
-  fontSize: "12px",
-  fontWeight: 700,
-},
+    storageBadge: {
+      display: "flex",
+      alignItems: "center",
+      gap: "8px",
+      border: "1px solid #a7f3d0",
+      background: "#ecfdf5",
+      color: "#065f46",
+      padding: "6px 12px",
+      borderRadius: "999px",
+      fontSize: "12px",
+      fontWeight: 700,
+    },
 
-greenDot: {
-  width: "8px",
-  height: "8px",
-  background: "#10b981",
-  borderRadius: "50%",
-},
+    greenDot: {
+      width: "8px",
+      height: "8px",
+      background: "#10b981",
+      borderRadius: "50%",
+    },
 
-countCircle: {
-  minWidth: "22px",
-  height: "22px",
-  padding: "0 6px",
-  borderRadius: "999px",
-  background: "#d1fae5",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  fontSize: "11px",
-  fontWeight: 800,
-},
+    countCircle: {
+      minWidth: "22px",
+      height: "22px",
+      padding: "0 6px",
+      borderRadius: "999px",
+      background: "#d1fae5",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      fontSize: "11px",
+      fontWeight: 800,
+    },
 
-actionButton: {
-  border: "1px solid #dbe3ec",
-  background: "#ffffff",
-  color: "#334155",
-  padding: "8px 14px",
-  borderRadius: "12px",
-  fontSize: "12px",
-  fontWeight: 700,
-  cursor: "pointer",
-},
+    actionButton: {
+      border: "1px solid #dbe3ec",
+      background: "#ffffff",
+      color: "#334155",
+      padding: "8px 14px",
+      borderRadius: "12px",
+      fontSize: "12px",
+      fontWeight: 700,
+      cursor: "pointer",
+    },
 
-primaryButton: {
-  border: "none",
-  background: "#902D41",
-  color: "#ffffff",
-  padding: "8px 14px",
-  borderRadius: "12px",
-  fontSize: "12px",
-  fontWeight: 700,
-  cursor: "pointer",
-},
+    primaryButton: {
+      border: "none",
+      background: "#902D41",
+      color: "#ffffff",
+      padding: "8px 14px",
+      borderRadius: "12px",
+      fontSize: "12px",
+      fontWeight: 700,
+      cursor: "pointer",
+    },
   };
 
   const handleAction = () => {
@@ -105,65 +105,59 @@ primaryButton: {
       return;
     }
 
-if (currentPage === "Plan Journey") {
-  onNavigation("My Journeys");
-  return;
-}
+    if (currentPage === "Plan Journey") {
+      onNavigation("My Journeys");
+      return;
+    }
 
-onNavigation("Plan Journey");
+    onNavigation("Plan Journey");
   };
 
-  const isPlanJourney =
-    currentPage === "Plan Journey";
+  const isPlanJourney = currentPage === "Plan Journey";
 
   const buttonText = isPlanJourney
-    ? Saved Trips (${savedJourneys.length})
+    ? `Saved Trips (${savedJourneys.length})`
     : "Plan Journey";
 
   return (
     <header style={styles.header}>
       <div>
         <div style={styles.breadcrumb}>
-          Railtrack  /  
+          Railtrack /{" "}
+          <span style={styles.breadcrumbActive}>
+            {currentPage}
+          </span>
+        </div>
 
-      <span
-        style={styles.breadcrumbActive}
-      >
-        {currentPage}
-      </span>
-    </div>
+        <h1 style={styles.pageTitle}>
+          {currentPage}
+        </h1>
+      </div>
 
-    <h1 style={styles.pageTitle}>
-      {currentPage}
-    </h1>
-  </div>
+      <div style={styles.headerActions}>
+        <div style={styles.storageBadge}>
+          <span style={styles.greenDot}></span>
 
-  <div style={styles.headerActions}>
-    <div style={styles.storageBadge}>
-      <span style={styles.greenDot} />
+          <span>LocalStorage</span>
 
-      <span>
-        LocalStorage
-      </span>
+          <span style={styles.countCircle}>
+            {savedJourneys.length}
+          </span>
+        </div>
 
-      <span style={styles.countCircle}>
-        {savedJourneys.length}
-      </span>
-    </div>
-
-    <button
-      type="button"
-      style={
-        isPlanJourney
-          ? styles.actionButton
-          : styles.primaryButton
-      }
-      onClick={handleAction}
-    >
-      {buttonText}
-    </button>
-  </div>
-</header>
+        <button
+          type="button"
+          style={
+            isPlanJourney
+              ? styles.actionButton
+              : styles.primaryButton
+          }
+          onClick={handleAction}
+        >
+          {buttonText}
+        </button>
+      </div>
+    </header>
   );
 }
 
