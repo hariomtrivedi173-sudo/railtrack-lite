@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 
+import Dashboard from "./components/dashboard/Dashboard";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import Footer from "./components/Footer";
+
 import PlanJourney from "./pages/PlanJourney";
 import TravelStatus from "./pages/TravelStatus";
 
@@ -24,6 +26,8 @@ function loadJourneys() {
 
 function App() {
   const [savedJourneys, setSavedJourneys] = useState(loadJourneys);
+
+  // Dashboard must open first
   const [currentPage, setCurrentPage] = useState("Dashboard");
 
   useEffect(() => {
@@ -38,6 +42,14 @@ function App() {
   };
 
   const handleReset = () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to remove all saved journeys?"
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
     localStorage.removeItem(STORAGE_KEY);
     setSavedJourneys([]);
   };
@@ -46,44 +58,14 @@ function App() {
     switch (currentPage) {
       case "Dashboard":
         return (
-          <div className="p-8">
-            <h1 className="text-3xl font-bold mb-4">
-              Dashboard
-            </h1>
-
-            <p className="text-gray-600">
-              Welcome to RailTrack Lite.
-            </p>
-
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-white rounded-lg shadow p-5">
-                <h2 className="font-semibold text-lg">
-                  Total Journeys
-                </h2>
-                <p className="text-3xl font-bold mt-2">
-                  {savedJourneys.length}
-                </p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow p-5">
-                <h2 className="font-semibold text-lg">
-                  Plan Journey
-                </h2>
-                <p className="text-gray-600 mt-2">
-                  Plan your next railway journey.
-                </p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow p-5">
-                <h2 className="font-semibold text-lg">
-                  Travel Stats
-                </h2>
-                <p className="text-gray-600 mt-2">
-                  View your travel analytics and metrics.
-                </p>
-              </div>
-            </div>
-          </div>
+          <Dashboard
+            onPlanJourney={() =>
+              handleNavigation("Plan Journey")
+            }
+            onMyJourneys={() =>
+              handleNavigation("My Journeys")
+            }
+          />
         );
 
       case "Plan Journey":
@@ -99,7 +81,7 @@ function App() {
           <TravelStatus
             savedJourneys={savedJourneys}
             onPlanJourney={() =>
-              setCurrentPage("Plan Journey")
+              handleNavigation("Plan Journey")
             }
           />
         );
@@ -107,12 +89,12 @@ function App() {
       case "My Journeys":
         return (
           <div className="p-8">
-            <h1 className="text-3xl font-bold mb-6">
+            <h1 className="mb-4 text-3xl font-bold">
               My Journeys
             </h1>
 
             {savedJourneys.length === 0 ? (
-              <div className="bg-white rounded-lg shadow p-6">
+              <div className="rounded-lg bg-white p-6 shadow">
                 <p className="text-gray-600">
                   No saved journeys yet.
                 </p>
@@ -121,16 +103,16 @@ function App() {
               <div className="space-y-4">
                 {savedJourneys.map((journey, index) => (
                   <div
-                    key={index}
-                    className="bg-white rounded-lg shadow p-5"
+                    key={journey.id || index}
+                    className="rounded-lg bg-white p-5 shadow"
                   >
                     <h2 className="font-semibold">
-                      Journey {index + 1}
+                      {journey.fromStation || "Journey"}{" "}
+                      →
+                      {" "}
+                      {journey.toStation ||
+                        `Journey ${index + 1}`}
                     </h2>
-
-                    <pre className="mt-3 text-sm text-gray-600 whitespace-pre-wrap">
-                      {JSON.stringify(journey, null, 2)}
-                    </pre>
                   </div>
                 ))}
               </div>
@@ -140,18 +122,20 @@ function App() {
 
       default:
         return (
-          <div className="p-8">
-            <h1 className="text-3xl font-bold">
-              Dashboard
-            </h1>
-          </div>
+          <Dashboard
+            onPlanJourney={() =>
+              handleNavigation("Plan Journey")
+            }
+            onMyJourneys={() =>
+              handleNavigation("My Journeys")
+            }
+          />
         );
     }
   };
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
-      
       <Sidebar
         currentPage={currentPage}
         savedJourneys={savedJourneys}
@@ -167,7 +151,6 @@ function App() {
           flexDirection: "column",
         }}
       >
-
         <Header
           currentPage={currentPage}
           savedJourneys={savedJourneys}
@@ -181,7 +164,6 @@ function App() {
           currentPage={currentPage}
           onNavigation={handleNavigation}
         />
-
       </div>
     </div>
   );
