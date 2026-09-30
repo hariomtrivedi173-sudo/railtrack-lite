@@ -3,7 +3,9 @@ import SavedJourneyCard from "../components/SavedJourneyCard";
 
 const STORAGE_KEY = "railtrack_saved_journeys";
 
-function MyJourneys() {
+function MyJourneys({
+  onPlanJourney,
+}) {
   // Load saved journeys from LocalStorage
   const [savedJourneys, setSavedJourneys] = useState(() => {
     try {
@@ -118,9 +120,11 @@ function MyJourneys() {
     setSavedJourneys([]);
   };
 
-  // Go to Plan Journey page
+  // Go to Plan Journey page using App navigation
   const goToPlanJourney = () => {
-    window.location.href = "/plan-journey";
+    if (onPlanJourney) {
+      onPlanJourney();
+    }
   };
 
   return (
@@ -162,6 +166,7 @@ function MyJourneys() {
             <div className="flex gap-3">
 
               <button
+                type="button"
                 onClick={goToPlanJourney}
                 className="rounded-2xl bg-red-800 px-6 py-4 font-semibold text-white transition hover:bg-red-900"
               >
@@ -172,6 +177,7 @@ function MyJourneys() {
               </button>
 
               <button
+                type="button"
                 onClick={clearAllJourneys}
                 disabled={savedJourneys.length === 0}
                 className="rounded-2xl border border-slate-200 bg-white px-6 py-4 font-semibold text-slate-500 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
@@ -195,6 +201,7 @@ function MyJourneys() {
 
             {/* All */}
             <button
+              type="button"
               onClick={() => setStatusFilter("all")}
               className={`rounded-full px-6 py-3 text-sm font-semibold transition ${
                 statusFilter === "all"
@@ -207,6 +214,7 @@ function MyJourneys() {
 
             {/* Planned */}
             <button
+              type="button"
               onClick={() => setStatusFilter("planned")}
               className={`rounded-full px-6 py-3 text-sm font-semibold transition ${
                 statusFilter === "planned"
@@ -219,6 +227,7 @@ function MyJourneys() {
 
             {/* Completed */}
             <button
+              type="button"
               onClick={() => setStatusFilter("completed")}
               className={`rounded-full px-6 py-3 text-sm font-semibold transition ${
                 statusFilter === "completed"
@@ -281,6 +290,7 @@ function MyJourneys() {
             {savedJourneys.length === 0 && (
 
               <button
+                type="button"
                 onClick={goToPlanJourney}
                 className="mt-7 rounded-2xl bg-red-800 px-7 py-3 font-semibold text-white hover:bg-red-900"
               >
