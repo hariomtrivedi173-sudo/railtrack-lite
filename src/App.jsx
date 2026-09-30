@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 
+import MyJourneys from "./pages/MyJourneys";
 import PlanJourney from "./pages/PlanJourney";
 import TravelStatus from "./pages/TravelStatus";
 
@@ -27,7 +28,7 @@ function loadJourneys() {
 function App() {
   const [savedJourneys, setSavedJourneys] = useState(loadJourneys);
 
-  // Dashboard must open first
+  // Dashboard opens first
   const [currentPage, setCurrentPage] = useState("Dashboard");
 
   useEffect(() => {
@@ -38,6 +39,7 @@ function App() {
   }, [savedJourneys]);
 
   const handleNavigation = (page) => {
+    setSavedJourneys(loadJourneys());
     setCurrentPage(page);
   };
 
@@ -76,6 +78,17 @@ function App() {
           />
         );
 
+      case "My Journeys":
+        return (
+          <MyJourneys
+            savedJourneys={savedJourneys}
+            setSavedJourneys={setSavedJourneys}
+            onPlanJourney={() =>
+              handleNavigation("Plan Journey")
+            }
+          />
+        );
+
       case "Travel Stats":
         return (
           <TravelStatus
@@ -84,40 +97,6 @@ function App() {
               handleNavigation("Plan Journey")
             }
           />
-        );
-
-      case "My Journeys":
-        return (
-          <div className="p-8">
-            <h1 className="mb-4 text-3xl font-bold">
-              My Journeys
-            </h1>
-
-            {savedJourneys.length === 0 ? (
-              <div className="rounded-lg bg-white p-6 shadow">
-                <p className="text-gray-600">
-                  No saved journeys yet.
-                </p>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                {savedJourneys.map((journey, index) => (
-                  <div
-                    key={journey.id || index}
-                    className="rounded-lg bg-white p-5 shadow"
-                  >
-                    <h2 className="font-semibold">
-                      {journey.fromStation || "Journey"}{" "}
-                      →
-                      {" "}
-                      {journey.toStation ||
-                        `Journey ${index + 1}`}
-                    </h2>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
         );
 
       default:
@@ -154,6 +133,7 @@ function App() {
         <Header
           currentPage={currentPage}
           savedJourneys={savedJourneys}
+          onNavigation={handleNavigation}
         />
 
         <main style={{ flex: 1 }}>
