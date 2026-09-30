@@ -18,7 +18,7 @@ function loadJourneys() {
     const raw = localStorage.getItem(STORAGE_KEY);
     const parsed = raw ? JSON.parse(raw) : [];
 
-    return Array.isArray(parsed) ? parsed : [];
+return Array.isArray(parsed) ? parsed : [];
   } catch (error) {
     console.error("Failed to load journeys:", error);
     return [];
@@ -38,21 +38,22 @@ function App() {
     );
   }, [savedJourneys]);
 
-  const handleNavigation = (page) => {
-    setCurrentPage(page);
-  };
+ const handleNavigation = (page) => {
+  setSavedJourneys(loadJourneys());
+  setCurrentPage(page);
+};
 
   const handleReset = () => {
     const confirmed = window.confirm(
       "Are you sure you want to remove all saved journeys?"
     );
 
-    if (!confirmed) {
-      return;
-    }
+if (!confirmed) {
+  return;
+}
 
-    localStorage.removeItem(STORAGE_KEY);
-    setSavedJourneys([]);
+localStorage.removeItem(STORAGE_KEY);
+setSavedJourneys([]);
   };
 
   const renderPage = () => {
@@ -69,47 +70,47 @@ function App() {
           />
         );
 
-      case "Plan Journey":
-        return (
-          <PlanJourney
-            savedJourneys={savedJourneys}
-            setSavedJourneys={setSavedJourneys}
-          />
-        );
+  case "Plan Journey":
+    return (
+      <PlanJourney
+        savedJourneys={savedJourneys}
+        setSavedJourneys={setSavedJourneys}
+      />
+    );
 
-      case "My Journeys":
-        return (
-          <MyJourneys
-            savedJourneys={savedJourneys}
-            setSavedJourneys={setSavedJourneys}
-            onPlanJourney={() =>
-              handleNavigation("Plan Journey")
-            }
-          />
-        );
+  case "My Journeys":
+    return (
+      <MyJourneys
+        savedJourneys={savedJourneys}
+        setSavedJourneys={setSavedJourneys}
+        onPlanJourney={() =>
+          handleNavigation("Plan Journey")
+        }
+      />
+    );
 
-      case "Travel Stats":
-        return (
-          <TravelStatus
-            savedJourneys={savedJourneys}
-            onPlanJourney={() =>
-              handleNavigation("Plan Journey")
-            }
-          />
-        );
+  case "Travel Stats":
+    return (
+      <TravelStatus
+        savedJourneys={savedJourneys}
+        onPlanJourney={() =>
+          handleNavigation("Plan Journey")
+        }
+      />
+    );
 
-      default:
-        return (
-          <Dashboard
-            onPlanJourney={() =>
-              handleNavigation("Plan Journey")
-            }
-            onMyJourneys={() =>
-              handleNavigation("My Journeys")
-            }
-          />
-        );
-    }
+  default:
+    return (
+      <Dashboard
+        onPlanJourney={() =>
+          handleNavigation("Plan Journey")
+        }
+        onMyJourneys={() =>
+          handleNavigation("My Journeys")
+        }
+      />
+    );
+}
   };
 
   return (
@@ -121,30 +122,30 @@ function App() {
         onReset={handleReset}
       />
 
-      <div
-        style={{
-          marginLeft: "315px",
-          minHeight: "100vh",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <Header
-        currentPage={currentPage}
-        savedJourneys={savedJourneys}
-        onNavigation={handleNavigation}
-        />
+  <div
+    style={{
+      marginLeft: "315px",
+      minHeight: "100vh",
+      display: "flex",
+      flexDirection: "column",
+    }}
+  >
+    <Header
+    currentPage={currentPage}
+    savedJourneys={savedJourneys}
+    onNavigation={handleNavigation}
+    />
 
-        <main style={{ flex: 1 }}>
-          {renderPage()}
-        </main>
+    <main style={{ flex: 1 }}>
+      {renderPage()}
+    </main>
 
-        <Footer
-          currentPage={currentPage}
-          onNavigation={handleNavigation}
-        />
-      </div>
-    </div>
+    <Footer
+      currentPage={currentPage}
+      onNavigation={handleNavigation}
+    />
+  </div>
+</div>
   );
 }
 
