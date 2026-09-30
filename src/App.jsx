@@ -130,8 +130,9 @@ function App() {
         }}
       >
         <Header
-          currentPage={currentPage}
-          savedJourneys={savedJourneys}
+        currentPage={currentPage}
+        savedJourneys={savedJourneys}
+        onNavigation={handleNavigation}
         />
 
         <main style={{ flex: 1 }}>
