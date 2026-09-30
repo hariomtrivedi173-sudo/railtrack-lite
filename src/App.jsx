@@ -38,9 +38,10 @@ function App() {
     );
   }, [savedJourneys]);
 
-  const handleNavigation = (page) => {
-    setCurrentPage(page);
-  };
+ const handleNavigation = (page) => {
+  setSavedJourneys(loadJourneys());
+  setCurrentPage(page);
+};
 
   const handleReset = () => {
     const confirmed = window.confirm(
